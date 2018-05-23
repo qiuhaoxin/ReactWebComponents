@@ -2,7 +2,7 @@ const webpack=require('webpack');
 const config=require('../webpackConfig/webpack.config.prod.js');
 const chalk=require('chalk');
 
-webpack.run(config,(err,stats)=>{
+webpack(config,(err,stats)=>{
     if(err){
     	console.error(chalk.red("error is "+err.stack||err));
 	    if(err.details){
