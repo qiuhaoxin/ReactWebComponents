@@ -19,34 +19,32 @@ class Dialog extends Component{
 
 	}
 	render(){
-		var leafDivs=[];
-		let {desc,show}=this.props;
-		var style={};
-		if(show){
-            style['visibility']='visible';
-		}else{
-			style['visibility']='hidden';
-		}
+		let leafDivs=[];
+		const {desc,visible}=this.props;
+		let style={};
+		style['visibility']=visible?'visible':'hidden';
 		for(let i=0;i<12;i++){
 			leafDivs.push(
-				<div key={'loadingLeaf'+i} className={'hxq-loading-leaf loading-leaf-'+i}>
+				<div key={'loadingLeaf'+i} className={`${Styles['loading-leaf']} loading-leaf-${i}`}>
 				</div>
 			);
 		}
 		return (
-           <div className='hxq-loading-wrapper' style={style}>
-                <div className='hxq-loading'>
+           <div className={Styles.wrapper} style={style}>
+                <div className={Styles.loading}>
                      {leafDivs}
                 </div>
-                <p className='hxq-loading-tip'>{desc}</p>
+                <p className={Styles['loading-tip']}>{desc}</p>
            </div>
 		)
 	}
 }
 Dialog.propTypes={
-
+   visible:PropTypes.bool.isRequired,
+   desc:PropTypes.string.isRequired,
 }
 Dialog.defaultProps={
-   visible:false
+   visible:false,
+   desc:'数据加载中，请稍后...',
 }
 export default Dialog;

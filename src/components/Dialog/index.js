@@ -10,9 +10,19 @@ class Dialog extends Component{
      
 	}
 	render(){
+		let btnStr="";
 		const {title,content,footer,onOK,onCancel,visible}=this.props;
 		if(footer==null){
 			//自定义的按钮
+			if(onCancel!=null && onOK!=null){
+				btnStr=<div className={Styles.btns}>
+				<span className={Styles['btn-cancel']} onClick={onOK}>取消</span>
+				<span className={Styles['btn-ok']} onClick={onCancel}>确定</span>
+				</div>
+			}
+			if(onCancel==null && onOK!=null){
+                btnStr=<div className={Styles.btns} onClick={onOK}>确定</div>;
+			}
 		}
 		return (
             <div className={Styles.wrapper} style={{visibility:visible?'visible':'hidden'}}>
@@ -23,7 +33,7 @@ class Dialog extends Component{
                     {content}
                 </div>
                 <div className={Styles.footer}>
-                    {footer}
+                    {btnStr}
                 </div>
             </div>
 	    )
@@ -38,6 +48,8 @@ Dialog.propTypes={
 }
 Dialog.defaultProps={
 	visible:false,
+	onOK:null,
+	onCancel:null,
 }
 
 export default Dialog
