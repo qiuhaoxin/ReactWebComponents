@@ -25,7 +25,6 @@ const postcssCssNext=require('postcss-cssnext');//postcss-cssnext
 const postcssViewportUnits=require('postcss-viewport-units');
 const cssnano=require('cssnano');
 
-
 process.env.NODE_ENV="production";
 process.env.BABEL_ENV="production";
 
@@ -186,6 +185,14 @@ module.exports={
            },
            {
            	  test:/\.(jpe?g|pgn|svg|gif)/,
+           	  loader:'url-loader',
+           	  options:{
+           	  	limit:8192,
+           	  	name:'static/media/[name].[hash:8].[ext]',
+           	  }
+           },{
+           	  test:/\.(woff|woff2|eot|ttf)$/,
+           	  exclude:/node_modules/,
            	  loader:'file-loader',
            }
 		]

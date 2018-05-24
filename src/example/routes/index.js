@@ -9,6 +9,7 @@ export default class Router extends Component{
           <HashRouter>
               <Switch>
                  <Route exact path="/" component={home}/>
+                 <Redirect to="/" />
               </Switch>
           </HashRouter>
 		)

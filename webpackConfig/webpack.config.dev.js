@@ -22,6 +22,7 @@ module.exports={
 	resolve:{
 		extensions:['.js','.jsx','.less','.css','.jsx','.json'],
 	},
+  devtool:'inline-source-map',
 	module:{
 		rules:[
            {
