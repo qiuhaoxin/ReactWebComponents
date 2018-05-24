@@ -3,25 +3,41 @@ import {is,fromJS} from 'immutable';
 import Styles from './index.less';
 import NineCell from '../../../components/NineCell/index.js';
 
+import Dialog from '../../../components/Dialog/index.js';
+
 const NineCellItem=NineCell.Item;
 export default class Home extends Component{
 	constructor(props){
 		super(props);
 		this.nineCellData=[
-            {title:'对话框',id:1},
-            {title:'loading',id:2},
+            {title:'Dialog',id:1},
+            {title:'Loading',id:2},
             {title:'Select',id:3},
             {title:'Radio',id:4},
-            {title:'tab',id:5},
+            {title:'Tab',id:5},
 
 		]
 	}
+    state={
+        showDialog:false,
+    }
 	componentDidMount(){
 
 	}
 	componentWillReceiveProps(nextProps){
 
 	}
+    handleNineCellClick=(item)=>{
+        const id=item.id;
+        switch(id){
+            case 1:
+               this.setState({
+                  showDialog:true,
+               })
+            break;
+        }
+    }
+
 	render(){
 		return (
           <div className={Styles.wrapper}>
@@ -29,7 +45,7 @@ export default class Home extends Component{
                 renderItem={
                 	(item)=>{
                 		return (
-                            <NineCellItem key={item.id} itemData={item}>
+                            <NineCellItem key={item.id} itemData={item} itemClick={this.handleNineCellClick}>
                                <span>{item.title}</span>
                             </NineCellItem>
                 		)
@@ -37,6 +53,7 @@ export default class Home extends Component{
                 }
              >
              </NineCell>
+             <Dialog title="提醒" content="请明天到招行交100块！" visible={this.state.showDialog} />
           </div>
 		)
 	}

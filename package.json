@@ -15,6 +15,7 @@
   "author": "qiuhaoxin",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "immutable": "^3.8.2",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",

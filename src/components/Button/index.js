@@ -19,7 +19,7 @@ class Button extends Component{
 
 	}
 	shouldComponentUpdate(nextProps,nextState){
-          return false;
+        return false;
 	}
     handleBtnClick(btnCB,key){
         btnCB(key);
