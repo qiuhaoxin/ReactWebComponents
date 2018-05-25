@@ -25,7 +25,7 @@ class Dialog extends Component{
 		style['visibility']=visible?'visible':'hidden';
 		for(let i=0;i<12;i++){
 			leafDivs.push(
-				<div key={'loadingLeaf'+i} className={`${Styles['loading-leaf']} loading-leaf-${i}`}>
+				<div key={'loadingLeaf'+i} className={`${Styles['loading-leaf']} ${Styles[`loading-leaf-${i}`]}`}>
 				</div>
 			);
 		}
