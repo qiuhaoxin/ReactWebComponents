@@ -58,7 +58,7 @@ class Home extends Component{
                })
             break;
             default:
-              this.props.history.push('/detail/'+id);
+              this.props.history.push('/detail/'+id+"/"+item.title);
             break;
 
         }
