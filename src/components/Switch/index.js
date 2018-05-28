@@ -13,24 +13,30 @@ class Switch extends Component{
     componentDidMount(){
     	const {initStatus}=this.props;
         this.setState({
-        	status:initStatus=='close'?0:1,
-
+        	status:initStatus=='close' ? 0 : 1,
         })
     }
     handleClick=()=>{
-
+        const {onChange}=this.props;
+        this.setState(preState=>{
+            if(onChange){
+                onChange(preState.status==0 ? 1 :0);
+            }
+            return ({
+               status:preState.status==0 ? 1 : 0, 
+            })
+        })
     }
+
 	render(){
 		const {openText,closeText}=this.props;
 		const {status}=this.state;
 		const classNameStr=classNames(
-			   {'switch-show':status==1,'switch-hide':status==0}
-			)
+			   {'switch-open':status==1,'switch-close':status==0}
+		)
 		return (
            <div className={Styles.wrapper}>
                 <div onClick={this.handleClick} className={Styles[`${classNameStr}`]}>
-                    <span>{openText}</span>
-                    <span>{closeText}</span>
                 </div>
            </div>
 		)
