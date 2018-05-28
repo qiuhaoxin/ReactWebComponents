@@ -1,8 +1,25 @@
 .wrapper{
 	display:flex;flex-direction:row;justify-content:center;align-items:center;width:100%;margin-top:14px;
-	&>label{
-
+	& .item{
+       display:inline-flex;
+       & .item-input{
+          appearance:none;outline:none;display:block;
+          width:30px;height:30px;border:0;outline:none;
+          vertical-align:middle;background:none;overflow:visible;position:relative;
+          &:before{
+            content:'';display:block;width:26px;height:26px;border-radius:17px;border:1px solid #dfe0e1;
+            position:absolute;left:0;top:0;
+          }
+       }
 	}
+	& .selected{
+	   & .item-input{
+	      &:after{
+	      	content:'';position:absolute;display:block;left:6px;top:6px;border-radius:9px;background:#18b4ed;width:18px;height:18px;
+	      }
+	   }
+	}
+
 }
 
 .group{

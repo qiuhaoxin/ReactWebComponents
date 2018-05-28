@@ -45,7 +45,7 @@ class Detial extends Component{
         console.log("value is "+value);
     }
     handleRadioChange=(value)=>{
-
+      
     }
 	render(){
 	   const {title}=this.props.match.params;

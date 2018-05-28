@@ -14,18 +14,28 @@ class Radio extends Component{
 	componentDidMount(){
 
 	}
-    handleRadioChange(value){
+  componentWillReceiveProps(nextProps){
+    
+  }
+  handleRadioChange(value){
        const {radioGroup}=this.context;
        if(radioGroup.onChange)radioGroup.onChange(value);
-    }
+  }
 	render(){
 		//let {config}=this.props;
 		const {text,onChange,value}=this.props;
 		const {radioGroup}=this.context;
+    let classNameStr="";
+    if(radioGroup){
+      const defaultValue=radioGroup.defaultValue;
+      if(defaultValue==value){
+         classNameStr='selected';
+      }
+    }
 		return (
-			<div className='hxq-radio-wrapper'>
-		        <label onClick={()=>this.handleRadioChange(value)}>
-                   <input name='radio' type='radio'/>
+			<div className={Styles.wrapper}>
+		        <label className={`${Styles.item} ${Styles[classNameStr]}`} onClick={()=>this.handleRadioChange(value)}>
+                   <input className={`${Styles['item-input']}`} name='radio' type='radio'/>
                    {
                       React.Children.map(this.props.children,function(child){
                       	 return (<span>{child}</span>)
@@ -66,8 +76,8 @@ class RadioGroup extends Component{
    	  }
    }
    componentDidMount(){
-   	      const {props}=this;
-   	   	  let value;
+   	    const {props}=this;
+   	   	let value;
 	   	  if('value' in props){
 	         value=props['value'];
 	   	  }else if('defaultValue' in props){
@@ -77,8 +87,11 @@ class RadioGroup extends Component{
 	   	  	value
 	   	  })
    }
-   handleRadioChange=()=>{
+   handleRadioChange=(value)=>{
       const {onChange}=this.props;
+      this.setState({
+        value
+      })
       if(onChange)onChange(value);
    }
    render(){
@@ -86,7 +99,6 @@ class RadioGroup extends Component{
        <div className={Styles.group}>
           {
           	React.Children.map(this.props.children,function(child){
-
           		return (
                    <div>
                         {child}
@@ -101,8 +113,15 @@ class RadioGroup extends Component{
 RadioGroup.childContextTypes={
 	radioGroup:PropTypes.object,
 }
+RadioGroup.propTypes={
+  onChange:PropTypes.func.isRequired,
+  value:PropTypes.oneOfType([PropTypes.number,PropTypes.string,PropTypes.bool]),
+  disabled:PropTypes.bool,
+  defaultValue:PropTypes.oneOfType([PropTypes.number,PropTypes.string,PropTypes.bool]),
+}
 RadioGroup.defaultProps={
 	disabled:false,
+  onChange:null,
 }
 Radio.RadioGroup=RadioGroup;
 export default Radio;
