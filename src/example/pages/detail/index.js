@@ -5,6 +5,8 @@ import Switch from '../../../components/Switch/index.js';
 
 import Radio from '../../../components/Radio/index.js';
 
+import Button from '../../../components/Button/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -16,6 +18,8 @@ class Detial extends Component{
 		showSwitch:false,
 		showRadio:false,
 		radioValue:'male',
+		showList:false,
+		showBtn:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
@@ -29,7 +33,13 @@ class Detial extends Component{
                this.changeState('showSwitch',true);
 			break;
 			case '4':
-                
+                this.changeState('showRadio',true);
+			break;
+			case '6':
+               this.changeState('showList',true);
+			break;
+			case '10':
+               this.changeState('showBtn',true);
 			break;
 			default:
 
@@ -47,23 +57,31 @@ class Detial extends Component{
     handleRadioChange=(value)=>{
       
     }
+    handleBtnClick=(e)=>{
+       console.log(" you click me!");
+    }
 	render(){
 	   const {title}=this.props.match.params;
-	   const {showSwitch,showRadio,radioValue}=this.state;
+	   const {showSwitch,showRadio,radioValue,showBtn}=this.state;
        return (
           <div className={Styles.wrapper}>
               <div>
                   {title}
               </div>
-              <div style={{'visibility':showSwitch ? 'visible' : 'hidden'}}>
+              <div style={{'display':showSwitch ? 'block' : 'none'}}>
                   <Switch onChange={this.handleSwitchChagne}/>
               </div>
-              <div>
+              <div style={{'display':showRadio ? 'block' : 'none'}}>
                   <RadioGroup defaultValue={radioValue} onChange={this.handleRadioChange}>
                       <Radio value="male">男</Radio>
                       <Radio value="female">女</Radio>
                       <Radio value="no">不男不女</Radio>
                   </RadioGroup>
+              </div>
+              <div style={{'display':showBtn ? 'block' : 'none'}}>
+                  <Button onClick={this.handleBtnClick}>默认样式</Button>
+                  <Button type='primary' styleObj={{border:'none',color:'#fff',marginTop:'20px'}}>保存</Button>
+                  <Button styleObj={{marginTop:'20px',background:'red',color:'#fff',border:'none'}}>取消</Button>
               </div>
           </div>
        )

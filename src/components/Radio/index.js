@@ -11,6 +11,7 @@ class Radio extends Component{
 		// 	selected:props.selected||props.config['radioData'][0]['type']
 		// }
 	}
+  
 	componentDidMount(){
 
 	}
@@ -18,8 +19,8 @@ class Radio extends Component{
     
   }
   handleRadioChange(value){
-       const {radioGroup}=this.context;
-       if(radioGroup.onChange)radioGroup.onChange(value);
+    const {radioGroup}=this.context;
+    if(radioGroup.onChange)radioGroup.onChange(value);
   }
 	render(){
 		//let {config}=this.props;

@@ -4,13 +4,13 @@ import Styles from './index.less'
 
 
 class Button extends Component{
-	//btnMode 1 
-    static defaultProps={
-    	btnMode:1,
-    }
 	constructor(props){
 		super(props);
-        
+		this.timeoutId=-1;
+        this.handleBtnClick=this.handleBtnClick.bind(this);
+	}
+	state={
+		activeClass:'',
 	}
 	componentWillMount(){
 
@@ -18,37 +18,46 @@ class Button extends Component{
 	componentDidMount(){
 
 	}
-	shouldComponentUpdate(nextProps,nextState){
-        return false;
-	}
-    handleBtnClick(btnCB,key){
-        btnCB(key);
+    handleBtnClick(e){
+       const {onClick,type}=this.props;
+       console.log("sdfsd"+`btn-${type}-active`)
+       this.setState({
+       	  activeClass:`btn-${type}-active`,
+       })
+       //this.setTimeout();
+       if(onClick)onClick(e.target);
+
     }
-    transformStyle=(style)=>{
-    	var wrapperClass='';
-        switch(style){
-            case 'borderTop':
-	            wrapperClass="btn-border-top";
-	            break;
-            case 'borderRight':
-	            wrapperClass="btn-border-right";
-	            break;
-            case 'borderLeft':
-	            wrapperClass="btn-border-left";
-	            break;
-            case 'borderBottom':
-	            wrapperClass="btn-border-bottom";
-	            break;
-        }
-        return wrapperClass;
+    setTimeout=()=>{
+    	const _this=this;
+       clearTimeout(this.timeoutId);
+       this.timeoutId=setTimeout(function(){
+          _this.setState({
+          	activeClass:'',
+          })
+       },100);
     }
 	render(){
-        const {title,content,footer,onOK,onCancel}=this.props;
+        const {title,content,footer,onOK,onCancel,type,styleObj}=this.props;
+        const {activeClass}=this.state;
+        const classNameStr=type ? `btn-${type}` : '';
 		return (
-           <div className={Styles.wrapper}>
-                
+           <div className={`${Styles.wrapper} ${Styles[classNameStr]} ${Styles[activeClass]}`} style={styleObj} onClick={this.handleBtnClick}>
+           {
+                React.Children.map(this.props.children,function(child){
+                	return (<span>{child}</span>)
+                })
+           }
            </div>
 		)
 	}
+}
+Button.propTypes={
+	styleObj:PropTypes.object,
+	type:PropTypes.string,
+}
+Button.defaultProps={
+   type:'',//ghost,dashed,primary,danger
+
 }
 export default Button;

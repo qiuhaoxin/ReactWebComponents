@@ -1,4 +1,28 @@
+@import '../Style/color.less';
 .wrapper{
-     width:200px;
-     	
+     width:80%;margin-left:10%;background:#fff;
+     color:#000;display:inline-flex;justify-content:center;padding:16px 19px;border-radius:5px;border:1px solid #e2e2e2;
+     &.btn-active{
+        background-color:#ddd;
+     }
+     &.btn-disable{
+        color:rgba(0,0,0,.3);
+        opacity:0.6;
+     }
+     &.btn-primary{
+         background:@primary-color;
+         &.btn-primary-active{
+            background-color:#0e80d2;
+            color:hsla(0,0%,100%,3);
+         }
+     }
+     &.btn-ghost{
+
+     }
+     &.btn-dashed{
+
+     }
+     &.btn-danger{
+
+     }
 }

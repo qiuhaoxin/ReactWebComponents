@@ -1,5 +1,5 @@
 .wrapper{
-	display:flex;flex-direction:row;justify-content:center;align-items:center;width:100%;margin-top:14px;
+	display:flex;flex-direction:row;justify-content:center;align-items:center;width:100%;margin-top:14px;box-sizing:border-box;
 	& .item{
        display:inline-flex;
        & .item-input{
@@ -7,15 +7,16 @@
           width:30px;height:30px;border:0;outline:none;
           vertical-align:middle;background:none;overflow:visible;position:relative;
           &:before{
-            content:'';display:block;width:26px;height:26px;border-radius:17px;border:1px solid #dfe0e1;
+            content:'';display:block;width:26px;height:26px;border-radius:14px;border:1px solid #dfe0e1;
             position:absolute;left:0;top:0;
           }
        }
 	}
 	& .selected{
+	   position:relative;
 	   & .item-input{
 	      &:after{
-	      	content:'';position:absolute;display:block;left:6px;top:6px;border-radius:9px;background:#18b4ed;width:18px;height:18px;
+	      	content:'';position:absolute;display:block;left:6px;top:6px;border-radius:8px;background:#18b4ed;width:16px;height:16px;
 	      }
 	   }
 	}

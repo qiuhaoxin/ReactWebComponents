@@ -25,7 +25,8 @@ class Home extends Component{
             {title:'Tip',id:7},
             {title:'SearchBar',id:8},
             {title:'Switch',id:9},
-
+            {title:'Button',id:10},
+            
 		]
 	}
     state={
