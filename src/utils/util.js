@@ -22,3 +22,8 @@ export function asyncComponent(importComponent){
    }
    return MyComponent;
 }
+
+export function isEmpty(str){
+    const emptyRegExp=/^\s*$/;
+    return emptyRegExp.test(str);
+}

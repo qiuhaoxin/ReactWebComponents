@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import Styles from './index.less'
+import {isEmpty} from '../../utils/util';
 
 
 class Button extends Component{
@@ -20,11 +21,18 @@ class Button extends Component{
 	}
     handleBtnClick(e){
        const {onClick,type}=this.props;
-       console.log("sdfsd"+`btn-${type}-active`)
+       console.log("type is "+type);
+       let activeClassStr='';
+       if(isEmpty(type)){
+           activeClassStr=`btn-active`;
+       }else{
+           activeClassStr=`btn-${type}-active`;
+       }
+       console.log("activeClassStr is "+activeClassStr);
        this.setState({
-       	  activeClass:`btn-${type}-active`,
+       	  activeClass:activeClassStr,
        })
-       //this.setTimeout();
+       this.setTimeout();
        if(onClick)onClick(e.target);
 
     }
