@@ -26,6 +26,7 @@ class Home extends Component{
             {title:'SearchBar',id:8},
             {title:'Switch',id:9},
             {title:'Button',id:10},
+            {title:'ActionSheet',id:11}
             
 		]
 	}
@@ -40,7 +41,7 @@ class Home extends Component{
 	componentWillReceiveProps(nextProps){
 
 	}
-    handleNineCellClick=(item)=>{
+  handleNineCellClick=(item)=>{
         const id=item.id;
         switch(id){
             case 1:

@@ -19,7 +19,7 @@ class Button extends Component{
 	componentDidMount(){
 
 	}
-    handleBtnClick(e){
+  handleBtnClick(e){
        const {onClick,type}=this.props;
        console.log("type is "+type);
        let activeClassStr='';

@@ -7,12 +7,19 @@ import Radio from '../../../components/Radio/index.js';
 
 import Button from '../../../components/Button/index.js';
 
+import ActionSheet from '../../../components/ActionSheet/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
 	constructor(props){
 		super(props);
 		this.componentName="";
+    this.actionSheetData=[
+       {id:1,text:'删除'},
+       {id:2,text:'跳转'},
+       {id:3,text:'保存'},
+    ]
 	}
 	state={
 		showSwitch:false,
@@ -20,6 +27,7 @@ class Detial extends Component{
 		radioValue:'male',
 		showList:false,
 		showBtn:false,
+    showActionSheet:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
@@ -41,6 +49,9 @@ class Detial extends Component{
 			case '10':
                this.changeState('showBtn',true);
 			break;
+      case '11':
+
+      break;
 			default:
 
 			break;
@@ -60,9 +71,19 @@ class Detial extends Component{
     handleBtnClick=(e)=>{
        console.log(" you click me!");
     }
+
+    handleActionSheetClick=()=>{
+        console.log("showActionSheet");
+        this.changeState('showActionSheet',true);
+    }
+    handleActionSheetItemClick=(item)=>{
+         const {id,text}=item;
+         console.log("sdfdsdsf");
+         this.changeState('showActionSheet',false);
+    }
 	render(){
 	   const {title}=this.props.match.params;
-	   const {showSwitch,showRadio,radioValue,showBtn}=this.state;
+	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet}=this.state;
        return (
           <div className={Styles.wrapper}>
               <div>
@@ -82,6 +103,11 @@ class Detial extends Component{
                   <Button onClick={this.handleBtnClick}>默认样式</Button>
                   <Button type='primary' styleObj={{border:'none',color:'#fff',marginTop:'20px'}}>保存</Button>
                   <Button styleObj={{marginTop:'20px',background:'red',color:'#fff',border:'none'}}>取消</Button>
+              </div>
+
+              <div>
+                  <Button type='primary' onClick={this.handleActionSheetClick}>ActionSheet</Button>
+                  <ActionSheet data={this.actionSheetData} onItemClick={this.handleActionSheetItemClick} visible={showActionSheet}></ActionSheet>
               </div>
           </div>
        )

@@ -1,0 +1,48 @@
+.wrapper,
+.wrapper-android{
+	& .content{
+	    font-size:20px;position:absolute;z-index:100;left:5%;width:90%;background:#fff;border-radius:10px;bottom:-2px;
+	    & .descrition{
+	       display:inline-flex;width:100%;justify-content:flex-start;padding-left:40px;align-items:center;height:60px;
+	       border-bottom:1px solid #eee;
+	    }
+		& .actionSheetList{
+	        &>li{
+	           width:100%;display:inline-flex;height:70px;align-items:center;justify-content:center;border-bottom:1px solid #eee;
+	           &:last-child{
+	             border-top-left-radius:10px;
+	           }
+	        }
+		}
+		& .space{
+		   width:100%;height:20px;background:#eee;
+		}
+		& .cancelBtn{
+		   width:100%;height:70px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:red;
+		}
+		&.as-hide{
+		   	 -webkit-transform:translate(0,100%);
+	         transform:translate(0,100%);
+	         transition:transform .3s;
+		}
+		&.as-show{
+		      -webkit-transform:translate(0,0);
+	          transform:translate(0,0);
+	          transition:transform .3s;
+		}
+	}
+	& .masker{
+	    position:fixed;left:0;width:100%;top:0;background:rgba(0,0,0,.1);bottom:0;
+        transition:opacity .1s;
+	    &.show-masker{
+	       opacity:1;display:block;
+	    }
+	    &.hide-masker{
+	        display:none;
+	        opacity:0;transition:opacity .1s;
+	    }
+	}
+}
+.wrapper-android{
+	width:100%;
+}
