@@ -27,3 +27,12 @@ export function isEmpty(str){
     const emptyRegExp=/^\s*$/;
     return emptyRegExp.test(str);
 }
+
+
+export function isEmptyObject(obj){
+     if(!obj)return true;
+     for(const key in obj){
+         return false;
+     }
+     return true;
+}

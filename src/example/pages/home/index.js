@@ -10,6 +10,8 @@ import Loading from '../../../components/Loading/index.js';
 
 import Tip from  '../../../components/Tip/index.js';//提示toask
 
+import Stepper from '../../../components/Stepper/index.js';//
+
 
 const NineCellItem=NineCell.Item;
 class Home extends Component{
@@ -26,8 +28,8 @@ class Home extends Component{
             {title:'SearchBar',id:8},
             {title:'Switch',id:9},
             {title:'Button',id:10},
-            {title:'ActionSheet',id:11}
-            
+            {title:'ActionSheet',id:11},
+            {title:'Stepper',id:12}, 
 		]
 	}
     state={

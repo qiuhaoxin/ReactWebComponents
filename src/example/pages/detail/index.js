@@ -9,6 +9,8 @@ import Button from '../../../components/Button/index.js';
 
 import ActionSheet from '../../../components/ActionSheet/index.js';
 
+import Stepper from '../../../components/Stepper/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -19,7 +21,8 @@ class Detial extends Component{
        {id:1,text:'删除'},
        {id:2,text:'跳转'},
        {id:3,text:'保存'},
-    ]
+    ];
+    this.limit={min:0,max:10};
 	}
 	state={
 		showSwitch:false,
@@ -28,6 +31,8 @@ class Detial extends Component{
 		showList:false,
 		showBtn:false,
     showActionSheet:false,
+    actionSheetShow:false,
+    showStepper:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
@@ -50,7 +55,10 @@ class Detial extends Component{
                this.changeState('showBtn',true);
 			break;
       case '11':
-
+             this.changeState('showActionSheet',true);
+      break;
+      case '12':
+             this.changeState('showStepper',true);
       break;
 			default:
 
@@ -74,16 +82,16 @@ class Detial extends Component{
 
     handleActionSheetClick=()=>{
         console.log("showActionSheet");
-        this.changeState('showActionSheet',true);
+        this.changeState('actionSheetShow',true);
     }
     handleActionSheetItemClick=(item)=>{
          const {id,text}=item;
          console.log("sdfdsdsf");
-         this.changeState('showActionSheet',false);
+         this.changeState('actionSheetShow',false);
     }
 	render(){
 	   const {title}=this.props.match.params;
-	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet}=this.state;
+	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper}=this.state;
        return (
           <div className={Styles.wrapper}>
               <div>
@@ -105,9 +113,26 @@ class Detial extends Component{
                   <Button styleObj={{marginTop:'20px',background:'red',color:'#fff',border:'none'}}>取消</Button>
               </div>
 
-              <div>
+              <div style={{'display':showActionSheet ? 'block' : 'none'}}>
                   <Button type='primary' onClick={this.handleActionSheetClick}>ActionSheet</Button>
-                  <ActionSheet data={this.actionSheetData} onItemClick={this.handleActionSheetItemClick} visible={showActionSheet}></ActionSheet>
+                  <ActionSheet data={this.actionSheetData} onItemClick={this.handleActionSheetItemClick} visible={actionSheetShow}></ActionSheet>
+              </div>
+
+              <div style={{'display':showStepper ? 'block' : 'none'}}>
+                  <div>
+                      <div>
+
+                      </div>
+                      <Stepper start={0} offset={2}></Stepper>
+                  </div>
+
+                  <div>
+                     <Stepper start={1} offset={1} leftIndicatorDisabled={true}></Stepper>
+                  </div>
+
+                  <div>
+                     <Stepper start={1} offset={1} limit={this.limit}></Stepper>
+                  </div>
               </div>
           </div>
        )
