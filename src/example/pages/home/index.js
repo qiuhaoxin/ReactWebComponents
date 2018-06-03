@@ -30,6 +30,7 @@ class Home extends Component{
             {title:'Button',id:10},
             {title:'ActionSheet',id:11},
             {title:'Stepper',id:12}, 
+            {title:'Segment',id:13},
 		]
 	}
     state={

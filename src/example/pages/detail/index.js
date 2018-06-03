@@ -11,6 +11,8 @@ import ActionSheet from '../../../components/ActionSheet/index.js';
 
 import Stepper from '../../../components/Stepper/index.js';
 
+import Segment from '../../../components/Segment/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -23,6 +25,16 @@ class Detial extends Component{
        {id:3,text:'保存'},
     ];
     this.limit={min:0,max:10};
+
+    this.segmentData=[
+       {text:'Segment1'},
+       {text:'Segment2'},
+       {text:'Segment3'},
+    ],
+    this.segmentData1=[
+       {text:'Segment1'},
+       {text:'Segment2'},
+    ]
 	}
 	state={
 		showSwitch:false,
@@ -33,6 +45,7 @@ class Detial extends Component{
     showActionSheet:false,
     actionSheetShow:false,
     showStepper:false,
+    showSegment:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
@@ -59,6 +72,9 @@ class Detial extends Component{
       break;
       case '12':
              this.changeState('showStepper',true);
+      break;
+      case '13':
+             this.changeState('showSegment',true);
       break;
 			default:
 
@@ -89,9 +105,12 @@ class Detial extends Component{
          console.log("sdfdsdsf");
          this.changeState('actionSheetShow',false);
     }
+    handleSegmentChange=(item)=>{
+       console.log("item is "+JSON.stringify(item));
+    }
 	render(){
 	   const {title}=this.props.match.params;
-	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper}=this.state;
+	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment}=this.state;
        return (
           <div className={Styles.wrapper}>
               <div>
@@ -133,6 +152,21 @@ class Detial extends Component{
                   <div>
                      <Stepper start={1} offset={1} limit={this.limit}></Stepper>
                   </div>
+              </div>
+
+              <div style={{'display':showSegment ? 'block' : 'none'}}>
+                  <div style={{width:'90%',margin:'40px auto'}}>
+                      <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
+                  </div>
+
+                  <div style={{margin:'40px auto',width:'200px'}}>
+                      <Segment data={this.segmentData1} activeEl={this.segmentData[0].id} onChange={this.handleSegmentChange}/>
+                  </div>
+
+                  <div style={{margin:'40px auto',width:'200px'}}>
+                      <Segment data={this.segmentData1} activeEl={this.segmentData[0].id} disable={true}/>
+                  </div>
+
               </div>
           </div>
        )

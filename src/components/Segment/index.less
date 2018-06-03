@@ -1,3 +1,20 @@
 .wrapper{
-	
+	display:inline-flex;width:100%;
+
+    & > ul{
+       display:inline-flex;border:1px solid #4285f4;border-radius:8px;width:98%;box-sizing:border-box;
+       &.sgm-disable{
+         opacity:.4;
+       }
+       & > li{
+          color:#4285f4;justify-content:center;display:inline-flex;height:50px;
+          box-sizing:border-box;
+          &.sgm-active{
+              color:#fff;background:#4285f4
+          }
+          &.sgm-middel{
+             border-left:1px solid #4285f4;border-right:1px solid #4285f4;
+          }
+       }
+    }
 }
