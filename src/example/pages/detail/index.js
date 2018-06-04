@@ -127,10 +127,10 @@ class Detial extends Component{
        console.log("item is "+JSON.stringify(item));
     }
     handleRenderSlavePage=()=>{
-
       return (
          <div>
-         
+            <Button type='primary'>test</Button>
+         </div>  
       )
     }
 	render(){
@@ -196,12 +196,47 @@ class Detial extends Component{
               </div>
 
               <div style={{'display':showIcon ? 'block' : 'none'}}>
-                  <Icon config={{icon:'e900',text:'d'}}/>
+                  <Icon config={{icon:'e900',text:'add',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e901',text:'close',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e902',text:'collection_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e903',text:'collection',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e904',text:'computer_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e905',text:'computer',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e906',text:'delete_fill',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e907',text:'download',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e908',text:'edit',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e909',text:'eit',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90a',text:'enter',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e90b',text:'export',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e90c',text:'import',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90d',text:'like_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90e',text:'like',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90f',text:'location',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e910',text:'logout',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e911',text:'more',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e912',text:'other',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e913',text:'qrcode_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e914',text:'qrcode',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e915',text:'refresh',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e916',text:'return',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e917',text:'search',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e918',text:'systemprompt_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e919',text:'systemprompt_fill',iconStyle:{fontSize:'25px'}}}/>
+
+
+                  <Icon config={{icon:'e91a',text:'trash_fill',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e91b',text:'trash',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e91c',text:'warning',iconStyle:{fontSize:'25px'}}}/>
+    
               </div>
 
               <div style={{'display':showTabPage ? 'block' : 'none'}}>
                    <TabPage
-                      slavePage={}
+                      slavePage={this.handleRenderSlavePage}
                    >
                       <div>
                           Segment

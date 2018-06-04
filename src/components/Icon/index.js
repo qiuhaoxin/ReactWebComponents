@@ -10,14 +10,19 @@ class Icon extends Component{
 
 	}
 	createMarkup=(icon)=>{
+	    const {config}=this.props;
+		const {text,iconStyle}=config;
+		console.log("iconStyle is "+JSON.stringify(iconStyle));
 		return {__html:'<i data-icon="&#x'+icon+';"></i>'};
 	}
 	render(){
 		const {config}=this.props;
+		const {text,icon,iconStyle,textStyle}=config;
 		return (
            <div className={Styles.wrapper}>
-                <div className={Styles['rwc-icon']} dangerouslySetInnerHTML={this.createMarkup(config.icon)}></div>
-                <div>{config.text}</div>
+                <div className={Styles['rwc-icon']} 
+                dangerouslySetInnerHTML={this.createMarkup(icon)}></div>
+                <div>{text}</div>
            </div>
 		)
 	}

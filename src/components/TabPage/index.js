@@ -46,6 +46,7 @@ class TabPage extends Component{
 	render(){
         const {slavePage}=this.props;
 		const {showMasker}=this.state;
+		console.log("slavePage is "+slavePage);
 		return (
            <div className={Styles.wrapper}>
                <div className={Styles.mainPage} ref={(el)=>this.mainPage=el}>
@@ -63,7 +64,7 @@ class TabPage extends Component{
 	               </div>
                </div>
                <div className={Styles.slavePage} ref={(el)=>this.slavePage=el}>
-                   slavePage
+                   {slavePage()}
                </div>
                <div className={Styles.masker} style={{display:showMasker ? 'block' : 'none'}} onClick={this.handleMasker}>
 
