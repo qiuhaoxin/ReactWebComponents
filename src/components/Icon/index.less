@@ -1,0 +1,30 @@
+@import '../Style/font.less';
+.wrapper{
+	display:inline-flex;
+	& .rwc-icon{
+		font-size:12px;font-family:'icomoon';
+		@font-face {
+		  font-family: 'icomoon';
+		  src:  url('../Font/icomoon.eot?6e8tob');
+		  src:  url('../Font/icomoon.eot?6e8tob#iefix') format('embedded-opentype'),
+		    url('../Font/icomoon.ttf?6e8tob') format('truetype'),
+		    url('../Font/icomoon.woff?6e8tob') format('woff'),
+		    url('../Font/icomoon.svg?6e8tob#icomoon') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		position:relative;
+		display:flex;
+		&>i{
+		   font-size:17px;
+		   &:before{
+		       content:attr(data-icon);
+		       speak: none;
+			   font-style: normal;
+			   font-weight: normal;
+			   font-variant: normal;
+			   text-transform: none;
+		   }
+		}
+    }
+}

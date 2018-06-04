@@ -31,6 +31,9 @@ class Home extends Component{
             {title:'ActionSheet',id:11},
             {title:'Stepper',id:12}, 
             {title:'Segment',id:13},
+            {title:'Icon',id:14},
+            {title:'TabPage',id:15},
+            {title:'Header',id:16},
 		]
 	}
     state={

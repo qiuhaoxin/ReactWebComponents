@@ -151,7 +151,11 @@ module.exports={
                     },
                     require.resolve('less-loader'),
                   ],
-           },
+           },{
+               test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+               exclude: /^node_modules$/,
+               loader: 'file-loader?name=[name].[ext]',
+           }
 		]
 	},
   output:{

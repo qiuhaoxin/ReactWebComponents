@@ -13,6 +13,12 @@ import Stepper from '../../../components/Stepper/index.js';
 
 import Segment from '../../../components/Segment/index.js';
 
+import Icon from '../../../components/Icon/index.js';
+
+import TabPage from '../../../components/TabPage/index.js';
+
+import Header from '../../../components/Header/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -46,6 +52,9 @@ class Detial extends Component{
     actionSheetShow:false,
     showStepper:false,
     showSegment:false,
+    showIcon:false,
+    showTabPage:false,
+    showHeader:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
@@ -75,6 +84,15 @@ class Detial extends Component{
       break;
       case '13':
              this.changeState('showSegment',true);
+      break;
+      case '14':
+             this.changeState('showIcon',true);
+      break;
+      case '15':
+             this.changeState('showTabPage',true);
+      break;
+      case '16':
+             this.changeState('showHeader',true);
       break;
 			default:
 
@@ -108,12 +126,20 @@ class Detial extends Component{
     handleSegmentChange=(item)=>{
        console.log("item is "+JSON.stringify(item));
     }
+    handleRenderSlavePage=()=>{
+
+      return (
+         <div>
+         
+      )
+    }
 	render(){
-	   const {title}=this.props.match.params;
-	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment}=this.state;
+	   const {title,id}=this.props.match.params;
+	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
+      showHeader}=this.state;
        return (
           <div className={Styles.wrapper}>
-              <div>
+              <div style={{display:((id==15 || id==16) ? 'none' : 'block')}}>
                   {title}
               </div>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -167,6 +193,26 @@ class Detial extends Component{
                       <Segment data={this.segmentData1} activeEl={this.segmentData[0].id} disable={true}/>
                   </div>
 
+              </div>
+
+              <div style={{'display':showIcon ? 'block' : 'none'}}>
+                  <Icon config={{icon:'e900',text:'d'}}/>
+              </div>
+
+              <div style={{'display':showTabPage ? 'block' : 'none'}}>
+                   <TabPage
+                      slavePage={}
+                   >
+                      <div>
+                          Segment
+                      </div>
+                      <div>
+                         <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
+                      </div>
+                   </TabPage>
+              </div>
+              <div style={{'display':showHeader ? 'block' : 'none'}}>
+                   <Header title={'Header'}/>
               </div>
           </div>
        )
