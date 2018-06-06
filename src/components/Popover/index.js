@@ -12,10 +12,18 @@ class Popover extends Component{
 	componentDidMount(){
 
 	}
+	renderItem=()=>{
+       const {data}=this.props;
+       data.map(item=><li></li>)
+	}
 	render(){
+		const {data,Style,children,content}=this.props;
 		return (
-            <div className={Styles.wrapper}>
-                
+            <div className={Styles.wrapper}>  
+               {children}
+               <div className={Styles.content}>
+                  {content()}
+               </div>
             </div>
 		)
 	}

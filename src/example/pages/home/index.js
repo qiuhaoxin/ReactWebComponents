@@ -12,7 +12,6 @@ import Tip from  '../../../components/Tip/index.js';//提示toask
 
 import Stepper from '../../../components/Stepper/index.js';//
 
-
 const NineCellItem=NineCell.Item;
 class Home extends Component{
 	constructor(props){
@@ -34,6 +33,8 @@ class Home extends Component{
             {title:'Icon',id:14},
             {title:'TabPage',id:15},
             {title:'Header',id:16},
+            {title:'PageViewer',id:17},
+            {title:'Popover',id:18},
 		]
 	}
     state={

@@ -6,31 +6,48 @@ class Icon extends Component{
 	constructor(props){
 		super(props);
 	}
+	state={
+		icon:'',
+		text:'',
+	}
 	componentDidMount(){
-
+        const {config}=this.props;
+        const {icon,text}=config;
+        this.setState({
+        	text,
+        	icon,
+        })
 	}
 	createMarkup=(icon)=>{
-	    const {config}=this.props;
-		const {text,iconStyle}=config;
-		console.log("iconStyle is "+JSON.stringify(iconStyle));
 		return {__html:'<i data-icon="&#x'+icon+';"></i>'};
+	}
+	handleIconClick=()=>{
+       const {config}=this.props;
+       const {icon_click,text_click,clickEvents}=config;
+       if(icon_click){
+	       this.setState({
+	       	  icon:icon_click,
+	       }) 
+       }      
+
 	}
 	render(){
 		const {config}=this.props;
-		const {text,icon,iconStyle,textStyle}=config;
+		const {iconStyle,textStyle,Style}=config;
+		const {icon,text}=this.state;
 		return (
-           <div className={Styles.wrapper}>
-                <div className={Styles['rwc-icon']} 
-                dangerouslySetInnerHTML={this.createMarkup(icon)}></div>
-                <div>{text}</div>
+           <div className={Styles.wrapper} style={Style} onClick={this.handleIconClick}>
+                <div className={Styles['rwc-icon']} style={iconStyle} dangerouslySetInnerHTML={this.createMarkup(icon)}>
+                </div>
+                <div style={textStyle}>{text}</div>
            </div>
 		)
 	}
 }
 Icon.defaultProps={
-
+    config:null,
 }
 Icon.propTypes={
-
+    config:PropTypes.object,
 }
 export default Icon;

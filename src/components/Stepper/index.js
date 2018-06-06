@@ -92,7 +92,6 @@ class Stepper extends Component{
 
 	   const {numberContent,leftIndicatorDisabled,rightIndicatorDisabled}=this.state;
 	   let leftDisabled='',rightDisabled='';
-	   console.log("leftIndicatorDisabled is "+leftIndicatorDisabled);
        leftDisabled=leftIndicatorDisabled ? 'left-indicator-disabled' : '';
        rightDisabled=rightIndicatorDisabled ? "right-indicator-disabled" : '';
 

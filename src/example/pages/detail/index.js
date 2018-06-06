@@ -19,6 +19,10 @@ import TabPage from '../../../components/TabPage/index.js';
 
 import Header from '../../../components/Header/index.js';
 
+import PageViewer from '../../../components/PageViewer/index.js';
+
+import Popover from '../../../components/Popover/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -40,6 +44,12 @@ class Detial extends Component{
     this.segmentData1=[
        {text:'Segment1'},
        {text:'Segment2'},
+    ],
+    this.tabData=[
+       {id:1,type:'icon',icon:'e914',text:'商品',icon_click:'e913'},
+       {id:2,type:'icon',icon:'e919',text:'购物车',icon_click:'e918'},
+       {id:3,type:'icon',icon:'e91b',text:'文件夹',icon_click:'e91a'},
+       {id:4,type:'icon',icon:'e905',text:'订单',icon_click:'e904'},
     ]
 	}
 	state={
@@ -55,12 +65,22 @@ class Detial extends Component{
     showIcon:false,
     showTabPage:false,
     showHeader:false,
+    showPageViewer:false,
+    showPopover:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
        	  [key]:value,
        })
 	}
+  handlerLT=()=>{
+    return (
+      <ul>
+         <li>选择一</li>
+         <li>选择二</li>
+      </ul>
+    )
+  }
 	componentDidMount(){
 		const {id,title}=this.props.match.params;
 		switch(id){
@@ -93,6 +113,12 @@ class Detial extends Component{
       break;
       case '16':
              this.changeState('showHeader',true);
+      break;
+      case '17':
+             this.changeState('showPageViewer',true);
+      break;
+      case '18':
+             this.changeState('showPopover',true);
       break;
 			default:
 
@@ -133,13 +159,16 @@ class Detial extends Component{
          </div>  
       )
     }
+    renderTagView=()=>{
+
+    }
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader}=this.state;
+      showHeader,showPageViewer,showPopover}=this.state;
        return (
           <div className={Styles.wrapper}>
-              <div style={{display:((id==15 || id==16) ? 'none' : 'block')}}>
+              <div style={{display:((id==15 || id==16 || id==17) ? 'none' : 'block')}}>
                   {title}
               </div>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -195,7 +224,7 @@ class Detial extends Component{
 
               </div>
 
-              <div style={{'display':showIcon ? 'block' : 'none'}}>
+              <div style={{'display':showIcon ? 'flex' : 'none','flexDirection':'row',width:'100%','flexWrap':'wrap'}}>
                   <Icon config={{icon:'e900',text:'add',iconStyle:{fontSize:'45px'}}}/>
                   <Icon config={{icon:'e901',text:'close',iconStyle:{fontSize:'45px'}}}/>
                   <Icon config={{icon:'e902',text:'collection_fill',iconStyle:{fontSize:'25px'}}}/>
@@ -225,7 +254,7 @@ class Detial extends Component{
                   <Icon config={{icon:'e916',text:'return',iconStyle:{fontSize:'25px'}}}/>
                   <Icon config={{icon:'e917',text:'search',iconStyle:{fontSize:'25px'}}}/>
                   <Icon config={{icon:'e918',text:'systemprompt_fill',iconStyle:{fontSize:'25px'}}}/>
-                  <Icon config={{icon:'e919',text:'systemprompt_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e919',text:'systemprompt',iconStyle:{fontSize:'25px'}}}/>
 
 
                   <Icon config={{icon:'e91a',text:'trash_fill',iconStyle:{fontSize:'45px'}}}/>
@@ -248,6 +277,18 @@ class Detial extends Component{
               </div>
               <div style={{'display':showHeader ? 'block' : 'none'}}>
                    <Header title={'Header'}/>
+              </div>
+              <div style={{'display':showPageViewer ? 'block' : 'none'}}>
+                    <PageViewer
+                      tabData={this.tabData}
+                    >
+
+                    </PageViewer>
+              </div>
+              <div style={{'display':showPopover ? 'block' : 'none'}}>
+                  <Popover content={this.handlerLT}>
+                      <Button type='primary'>LT</Button>
+                  </Popover>
               </div>
           </div>
        )

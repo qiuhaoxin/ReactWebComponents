@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Styles from './index.less';
 
 import Header from '../Header/index.js';
+import Icon from '../Icon/index.js';
 
 class TabPage extends Component{
 	constructor(props){
@@ -46,11 +47,10 @@ class TabPage extends Component{
 	render(){
         const {slavePage}=this.props;
 		const {showMasker}=this.state;
-		console.log("slavePage is "+slavePage);
 		return (
            <div className={Styles.wrapper}>
                <div className={Styles.mainPage} ref={(el)=>this.mainPage=el}>
-	               <Header showVisble={true} title={'TabPage'} leftComponent={()=>{return (<span onClick={this.handleTransform}>click me</span>)} } />
+	               <Header showVisble={true} title={'TabPage'} leftComponent={()=>{return (<div onClick={this.handleTransform}><Icon config={{icon:'e912',text:'',iconStyle:{fontSize:'45px !important'}}}/></div>)} } />
 	               <div style={{background:'#eee'}}>
                         {
                         	React.Children.map(this.props.children,(child)=>{
