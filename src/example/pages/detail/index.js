@@ -23,6 +23,8 @@ import PageViewer from '../../../components/PageViewer/index.js';
 
 import Popover from '../../../components/Popover/index.js';
 
+import Badge from '../../../components/Badge/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 class Detial extends Component{
@@ -67,20 +69,25 @@ class Detial extends Component{
     showHeader:false,
     showPageViewer:false,
     showPopover:false,
+    showBadge:false,
 	}
 	changeState=(key,value)=>{
        this.setState({
        	  [key]:value,
        })
 	}
+  handlePopoverItem=()=>{
+     console.log("handlePopoverItem");
+  }
   handlerLT=()=>{
     return (
-      <ul>
-         <li>选择一</li>
-         <li>选择二</li>
+      <ul className={Styles.popover}>
+         <li onClick={()=>this.handlePopoverItem()}>选择一</li>
+         <li onClick={()=>this.handlePopoverItem()}>选择二</li>
       </ul>
     )
   }
+
 	componentDidMount(){
 		const {id,title}=this.props.match.params;
 		switch(id){
@@ -119,6 +126,9 @@ class Detial extends Component{
       break;
       case '18':
              this.changeState('showPopover',true);
+      break;
+      case '19':
+             this.changeState('showBadge',true);
       break;
 			default:
 
@@ -165,7 +175,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge}=this.state;
        return (
           <div className={Styles.wrapper}>
               <div style={{display:((id==15 || id==16 || id==17) ? 'none' : 'block')}}>
@@ -289,6 +299,11 @@ class Detial extends Component{
                   <Popover content={this.handlerLT}>
                       <Button type='primary'>LT</Button>
                   </Popover>
+              </div>
+              <div style={{'display':showBadge ? 'block' : 'none'}}>
+                  <Badge/>
+                  <Badge text={5} wrapperStyle={{marginLeft:'40px'}}/>
+                  <Badge text={'大优惠'}/>
               </div>
           </div>
        )
