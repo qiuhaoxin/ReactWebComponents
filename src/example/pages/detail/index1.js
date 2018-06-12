@@ -1,10 +1,7 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types';
-//import Style from './index1.less';
- import './index.less';
+// import Styles from './index.less';
 
-
- import Switch from '../../../components/Switch/index.js';
+import Switch from '../../../components/Switch/index.js';
 
 import Radio from '../../../components/Radio/index.js';
 
@@ -30,12 +27,10 @@ import Badge from '../../../components/Badge/index.js';
 
 const RadioGroup=Radio.RadioGroup;
 
-import List from '../../../components/List/index.js';
-
 class Detial extends Component{
 	constructor(props){
 		super(props);
-    this.componentName="";
+		this.componentName="";
     this.actionSheetData=[
        {id:1,text:'删除'},
        {id:2,text:'跳转'},
@@ -76,37 +71,38 @@ class Detial extends Component{
     showPopover:false,
     showBadge:false,
 	}
-  changeState=(key,value)=>{
+	changeState=(key,value)=>{
        this.setState({
-          [key]:value,
+       	  [key]:value,
        })
-  }
+	}
   handlePopoverItem=()=>{
      console.log("handlePopoverItem");
   }
   handlerLT=()=>{
     return (
-      <ul className={`popover-list`}>
+      <ul className={Styles.popover}>
          <li onClick={()=>this.handlePopoverItem()}>选择一</li>
          <li onClick={()=>this.handlePopoverItem()}>选择二</li>
       </ul>
     )
   }
+
 	componentDidMount(){
-     const {id,title}=this.props.match.params;
-    switch(id){
-      case '9':
+		const {id,title}=this.props.match.params;
+		switch(id){
+			case '9':
                this.changeState('showSwitch',true);
-      break;
-      case '4':
+			break;
+			case '4':
                 this.changeState('showRadio',true);
-      break;
-      case '6':
+			break;
+			case '6':
                this.changeState('showList',true);
-      break;
-      case '10':
+			break;
+			case '10':
                this.changeState('showBtn',true);
-      break;
+			break;
       case '11':
              this.changeState('showActionSheet',true);
       break;
@@ -134,16 +130,17 @@ class Detial extends Component{
       case '19':
              this.changeState('showBadge',true);
       break;
-      default:
+			default:
 
-      break;
-    }
+			break;
+		}
+        
 	}
 
 	componentWillReceiveProps(nextProps){
 
 	}
-      handleSwitchChagne=(value)=>{
+    handleSwitchChagne=(value)=>{
         console.log("value is "+value);
     }
     handleRadioChange=(value)=>{
@@ -180,7 +177,10 @@ class Detial extends Component{
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
       showHeader,showPageViewer,showPopover,showBadge}=this.state;
        return (
-          <div className={'detail-wrapper'}>
+                    <div className={Styles.wrapper}>
+              <div style={{display:((id==15 || id==16 || id==17) ? 'none' : 'block')}}>
+                  {title}
+              </div>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
                   <Switch onChange={this.handleSwitchChagne}/>
               </div>
@@ -305,12 +305,144 @@ class Detial extends Component{
                   <Badge text={5} wrapperStyle={{marginLeft:'40px'}}/>
                   <Badge text={'大优惠'}/>
               </div>
-
           </div>
        )
 	}
 }
 export default Detial;
+////<RadioGroup defaultValue={radioValue} onChange={this.handleRadioChange}>
+                 // </RadioGroup>
 
 
+/*
+          <div className={Styles.wrapper}>
+              <div style={{display:((id==15 || id==16 || id==17) ? 'none' : 'block')}}>
+                  {title}
+              </div>
+              <div style={{'display':showSwitch ? 'block' : 'none'}}>
+                  <Switch onChange={this.handleSwitchChagne}/>
+              </div>
+              <div style={{'display':showRadio ? 'block' : 'none'}}>
+                  <RadioGroup defaultValue={radioValue} onChange={this.handleRadioChange}>
+                      <Radio value="male">男</Radio>
+                      <Radio value="female">女</Radio>
+                      <Radio value="no">不男不女</Radio>
+                  </RadioGroup>
+              </div>
+              <div style={{'display':showBtn ? 'block' : 'none'}}>
+                  <Button onClick={this.handleBtnClick}>默认样式</Button>
+                  <Button type='primary' styleObj={{border:'none',color:'#fff',marginTop:'20px'}}>保存</Button>
+                  <Button styleObj={{marginTop:'20px',background:'red',color:'#fff',border:'none'}}>取消</Button>
+              </div>
 
+              <div style={{'display':showActionSheet ? 'block' : 'none'}}>
+                  <Button type='primary' onClick={this.handleActionSheetClick}>ActionSheet</Button>
+                  <ActionSheet data={this.actionSheetData} onItemClick={this.handleActionSheetItemClick} visible={actionSheetShow}></ActionSheet>
+              </div>
+
+              <div style={{'display':showStepper ? 'block' : 'none'}}>
+                  <div>
+                      <div>
+
+                      </div>
+                      <Stepper start={0} offset={2}></Stepper>
+                  </div>
+
+                  <div>
+                     <Stepper start={1} offset={1} leftIndicatorDisabled={true}></Stepper>
+                  </div>
+
+                  <div>
+                     <Stepper start={1} offset={1} limit={this.limit}></Stepper>
+                  </div>
+              </div>
+
+              <div style={{'display':showSegment ? 'block' : 'none'}}>
+                  <div style={{width:'90%',margin:'40px auto'}}>
+                      <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
+                  </div>
+
+                  <div style={{margin:'40px auto',width:'200px'}}>
+                      <Segment data={this.segmentData1} activeEl={this.segmentData[0].id} onChange={this.handleSegmentChange}/>
+                  </div>
+
+                  <div style={{margin:'40px auto',width:'200px'}}>
+                      <Segment data={this.segmentData1} activeEl={this.segmentData[0].id} disable={true}/>
+                  </div>
+
+              </div>
+
+              <div style={{'display':showIcon ? 'flex' : 'none','flexDirection':'row',width:'100%','flexWrap':'wrap'}}>
+                  <Icon config={{icon:'e900',text:'add',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e901',text:'close',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e902',text:'collection_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e903',text:'collection',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e904',text:'computer_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e905',text:'computer',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e906',text:'delete_fill',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e907',text:'download',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e908',text:'edit',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e909',text:'eit',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90a',text:'enter',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e90b',text:'export',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e90c',text:'import',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90d',text:'like_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90e',text:'like',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e90f',text:'location',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e910',text:'logout',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e911',text:'more',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e912',text:'other',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e913',text:'qrcode_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e914',text:'qrcode',iconStyle:{fontSize:'25px'}}}/>
+
+                  <Icon config={{icon:'e915',text:'refresh',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e916',text:'return',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e917',text:'search',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e918',text:'systemprompt_fill',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e919',text:'systemprompt',iconStyle:{fontSize:'25px'}}}/>
+
+
+                  <Icon config={{icon:'e91a',text:'trash_fill',iconStyle:{fontSize:'45px'}}}/>
+                  <Icon config={{icon:'e91b',text:'trash',iconStyle:{fontSize:'25px'}}}/>
+                  <Icon config={{icon:'e91c',text:'warning',iconStyle:{fontSize:'25px'}}}/>
+    
+              </div>
+
+              <div style={{'display':showTabPage ? 'block' : 'none'}}>
+                   <TabPage
+                      slavePage={this.handleRenderSlavePage}
+                   >
+                      <div>
+                          Segment
+                      </div>
+                      <div>
+                         <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
+                      </div>
+                   </TabPage>
+              </div>
+              <div style={{'display':showHeader ? 'block' : 'none'}}>
+                   <Header title={'Header'}/>
+              </div>
+              <div style={{'display':showPageViewer ? 'block' : 'none'}}>
+                    <PageViewer
+                      tabData={this.tabData}
+                    >
+
+                    </PageViewer>
+              </div>
+              <div style={{'display':showPopover ? 'block' : 'none'}}>
+                  <Popover content={this.handlerLT}>
+                      <Button type='primary'>LT</Button>
+                  </Popover>
+              </div>
+              <div style={{'display':showBadge ? 'block' : 'none'}}>
+                  <Badge/>
+                  <Badge text={5} wrapperStyle={{marginLeft:'40px'}}/>
+                  <Badge text={'大优惠'}/>
+              </div>
+          </div>
+*
+*/

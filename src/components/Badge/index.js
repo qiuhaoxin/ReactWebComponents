@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
 import {isEmtpy} from '../../utils/util';
+import './index.less';
 
+const prefixCls="badge";
 class Badge extends Component{
 	constructor(props){
 		super(props);
@@ -19,11 +21,11 @@ class Badge extends Component{
 	   }else{
 	   	  tempStyle['color']="#fff";
 	   }
-	   console.log("tempStyle  is "+JSON.stringify(tempStyle));
+	   //console.log("tempStyle  is "+JSON.stringify(tempStyle));
        let wrapperStyle1=Object.assign({},tempStyle,wrapperStyle);
-       console.log("wrapperStyle is "+JSON.stringify(wrapperStyle1));
+       //console.log("wrapperStyle is "+JSON.stringify(wrapperStyle1));
        return (
-          <div className={Styles.wrapper} >
+          <div className={'badge-wrapper'} >
               <span style={wrapperStyle1}>{text}</span>
           </div>
        )

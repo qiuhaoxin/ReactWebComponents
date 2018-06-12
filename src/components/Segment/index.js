@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 
+const prefixCls="sgm";
 class Segment extends Component{
 	constructor(props){
 		super(props);
@@ -45,10 +47,10 @@ class Segment extends Component{
 		const {data,disable}=this.props;
         const {activeElId,segmentData}=this.state;
         const styleObj={width:100/data.length+'%'};
-        const disableClass=disable ? 'sgm-disable' : ''
+        const disableClass=disable ? 'sgm-disable' : '';
 		return (
-            <div className={Styles.wrapper}>
-                <ul className={Styles[disableClass]}>
+            <div className={'sgm-wrapper'}>
+                <ul className={`${disableClass}`}>
                    {
                    	segmentData.map(item=>{
                    		let classNameStr="";
@@ -60,7 +62,7 @@ class Segment extends Component{
                             middleClass='sgm-middel';
                         }
                    		return (
-                            <li key={item.id} style={styleObj} className={`${Styles[classNameStr]} ${Styles[middleClass]}`} onClick={()=>this.handleItemClick(item)}>
+                            <li key={item.id} style={styleObj} className={`${classNameStr} ${middleClass}`} onClick={()=>this.handleItemClick(item)}>
                                <span>{item.text}</span>
                             </li>
                    		)

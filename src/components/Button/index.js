@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less'
+// import Styles from './index.less'
 import {isEmpty} from '../../utils/util';
+import './index.less';
 
 
 class Button extends Component{
@@ -50,7 +51,7 @@ class Button extends Component{
         const {activeClass}=this.state;
         const classNameStr=type ? `btn-${type}` : '';
 		return (
-           <div className={`${Styles.wrapper} ${Styles[classNameStr]} ${Styles[activeClass]}`} style={styleObj} onClick={this.handleBtnClick}>
+           <div className={`btn-wrapper ${classNameStr} ${activeClass}`} style={styleObj} onClick={this.handleBtnClick}>
            {
                 React.Children.map(this.props.children,function(child){
                 	return (<span>{child}</span>)

@@ -1,6 +1,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
+
+const prefixCls='dialog';
 
 class Dialog extends Component{
 	constructor(props){
@@ -15,24 +18,24 @@ class Dialog extends Component{
 		if(footer==null){
 			//自定义的按钮
 			if(onCancel!=null && onOK!=null){
-				btnStr=<div className={Styles.btns}>
-				<span className={Styles['btn-cancel']} onClick={onOK}>取消</span>
-				<span className={Styles['btn-ok']} onClick={onCancel}>确定</span>
+				btnStr=<div className={'dialog-btns'}>
+				<span className={'dialog-btn-cancel'} onClick={onOK}>取消</span>
+				<span className={'dialog-btn-ok'} onClick={onCancel}>确定</span>
 				</div>
 			}
 			if(onCancel==null && onOK!=null){
-                btnStr=<div className={Styles.btns} onClick={onOK}>确定</div>;
+                btnStr=<div className={'dialog-btns'} onClick={onOK}>确定</div>;
 			}
 		}
 		return (
-            <div className={Styles.wrapper} style={{visibility:visible?'visible':'hidden'}}>
-                <div className={Styles.title}>
+            <div className={'dialog-wrapper'} style={{visibility:visible?'visible':'hidden'}}>
+                <div className={'dialog-title'}>
                    {title}
                 </div>
-                <div className={Styles.content}>
+                <div className={'dialog-content'}>
                     {content}
                 </div>
-                <div className={Styles.footer}>
+                <div className={'dialog-footer'}>
                     {btnStr}
                 </div>
             </div>

@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 
+const prefixCls="nc";
 class NineCell extends Component{
 	constructor(props){
 		super(props);
@@ -12,14 +14,14 @@ class NineCell extends Component{
 	render(){
 		const {data,renderItem,columnNum}=this.props;
 		return (
-           <div className={Styles.wrapper}>
+           <div className={'nc-wrapper'}>
                 {
                 	data.map(item=>{
                 		const styleObj={}
                 		if(columnNum){
                           styleObj['width']=100 / columnNum +"%";
                 		}
-                    return  renderItem ? <div className={Styles.item} key={item.id} style={styleObj}>{renderItem(item)}</div> : (<div key={item.id}><span>{item.title}</span></div>)
+                    return  renderItem ? <div className={'nc-item'} key={item.id} style={styleObj}>{renderItem(item)}</div> : (<div key={item.id}><span>{item.title}</span></div>)
                 	})
                 }
            </div>     

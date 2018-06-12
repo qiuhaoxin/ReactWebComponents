@@ -1,8 +1,11 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 import Icon from '../Icon/index.js';
 
+
+const prefixCls='header';
 class Header extends Component{
     constructor(props){
     	super(props);
@@ -28,16 +31,16 @@ class Header extends Component{
     	const {title,showVisible,leftComponent,rightComponent}=this.props;
     	const wrapperStyle={display:showVisible ? 'inline-flex' : 'hidden'};
     	return (
-           <div className={Styles.wrapper} style={wrapperStyle}>
-                <div className={Styles['header-left']}>
+           <div className={'header-wrapper'} style={wrapperStyle}>
+                <div className={'header-left'}>
                      {
                      	leftComponent!=null ? leftComponent() : this.defaultLeft()
                      }
                 </div>
-                <div className={Styles.title}>
+                <div className={'header-title'}>
                    {title}
                 </div>
-                <div className={Styles['header-right']}>
+                <div className={'header-right'}>
                    {
                      rightComponent!=null ? rightComponent() : this.defaultRight()
                    }

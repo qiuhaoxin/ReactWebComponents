@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
 import Icon from '../Icon/index.js';
+import './index.less';
 
+const prefixCls="pageviewer";
 class PageViewer extends Component{
 	constructor(props){
         super(props);
@@ -19,7 +21,7 @@ class PageViewer extends Component{
 
 		return tabData.map(item=>{
 			return (
-                 <div onClick={()=>this.handleItemClick(item)} key={item.id} className={Styles.tag}><Icon config={{icon:item.icon,text:item.text,Style:{},icon_click:item['icon_click']}} /></div>
+                 <div onClick={()=>this.handleItemClick(item)} key={item.id} className={'pageviewer-tag'}><Icon config={{icon:item.icon,text:item.text,Style:{},icon_click:item['icon_click']}} /></div>
 			)
 		})
 
@@ -27,11 +29,11 @@ class PageViewer extends Component{
 	render(){
 		const {tabView}=this.props;
 		return (
-            <div className={Styles.wrapper}>
+            <div className={'pageviewer-wrapper'}>
                  <div ref={el=>this.contentWrapper=el}>
 
                  </div>
-                 <div className={Styles.footer}>
+                 <div className={'pageviewer-footer'}>
                      {
                      	tabView ? tabView() : this.renderFooter()
                      }

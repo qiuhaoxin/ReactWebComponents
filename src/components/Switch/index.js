@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
 import classNames from 'classnames';
+import './index.less';
 
+const prefixCls="switch";
 class Switch extends Component{
 	constructor(props){
 		super(props);
@@ -35,8 +37,8 @@ class Switch extends Component{
 			   {'switch-open':status==1,'switch-close':status==0}
 		)
 		return (
-           <div className={Styles.wrapper}>
-                <div onClick={this.handleClick} className={Styles[`${classNameStr}`]}>
+           <div className={'switch-wrapper'}>
+                <div onClick={this.handleClick} className={`${classNameStr}`}>
                 </div>
            </div>
 		)

@@ -11,9 +11,9 @@ export default class Router extends Component{
 		return (
           <HashRouter>
               <Switch>
-                 <Route exact path="/" component={Home}/>
+                 <Route exact path="/Home" component={Home}/>
                  <Route path='/detail/:id/:title' component={Detail}/>
-                 <Redirect to="/" />
+                 <Redirect to="/Home" />
               </Switch>
           </HashRouter>
 		)

@@ -1,9 +1,11 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+
 import classNames from 'classnames';
 import {is,fromJS} from 'immutable';
+import './index.less';
 
+const prefixCls="as";
 class ActionSheet extends Component{
      constructor(props){
      	super(props);
@@ -45,20 +47,20 @@ class ActionSheet extends Component{
      	const maskerVisible=visibility ? 'show-masker' : 'hide-masker';
         //data.push({id:99,text:cancelBtn});
      	return (
-           <div className={Styles['wrapper']}>
-               <div className={`${Styles['content']} ${Styles[visibleClass]}`} >
-                   <div className={Styles['descrition']}>{descrition}</div>
-	               <ul className={Styles.actionSheetList}>
+           <div className={'as-wrapper'}>
+               <div className={`as-content ${visibleClass}`} >
+                   <div className={'as-descrition'}>{descrition}</div>
+	               <ul className={'as-actionSheetList'}>
 	               {
 	                  data.map(item=><li key={item.id} onClick={()=>this.handleClick(item)}><span>{item.text}</span></li>)
 	               }
 	               </ul>
-	               <div className={Styles.space}></div>
-	               <div className={Styles.cancelBtn} onClick={this.handleCancelClick}>
+	               <div className={'as-space'}></div>
+	               <div className={'as-cancelBtn'} onClick={this.handleCancelClick}>
 	                  {cancelBtn}
 	               </div>
                </div>
-               <div className={`${Styles.masker} ${Styles[maskerVisible]}`}>
+               <div className={`as-masker ${maskerVisible}`}>
                    
                </div>
            </div>

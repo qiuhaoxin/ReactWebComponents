@@ -1,10 +1,12 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 
 import Header from '../Header/index.js';
 import Icon from '../Icon/index.js';
 
+const prefixCls='tabpage';
 class TabPage extends Component{
 	constructor(props){
 		super(props);
@@ -14,11 +16,11 @@ class TabPage extends Component{
 	}
 	handleTransform=()=>{
 		const _this=this;
-	    if(this.mainPage && this.slavePage){
+	    if(this.mainPage && this.slavePageRef){
 	    	this.mainPage.style['transform']="translate(80%,0)";
 	    	this.mainPage.style['transition']="transform .1s ease";
-	    	this.slavePage.style['transform']="translate(0,0)";
-	    	this.slavePage.style['transition']="transform .1s ease";
+	    	this.slavePageRef.style['transform']="translate(0,0)";
+	    	this.slavePageRef.style['transition']="transform .1s ease";
 	    }
         setTimeout(function(){
 		    _this.setState(preState=>{
@@ -30,11 +32,11 @@ class TabPage extends Component{
 	}
 	handleMasker=()=>{
 		const _this=this;
-		if(this.mainPage && this.slavePage){
+		if(this.mainPage && this.slavePageRef){
 			this.mainPage.style['transform']="translate(0,0)";
 	    	this.mainPage.style['transition']="transform .1s ease";
-	    	this.slavePage.style['transform']="translate(-100%,0)";
-	    	this.slavePage.style['transition']="transform .1s ease";
+	    	this.slavePageRef.style['transform']="translate(-100%,0)";
+	    	this.slavePageRef.style['transition']="transform .1s ease";
 		}
 		setTimeout(function(){
 		    _this.setState(preState=>{
@@ -44,12 +46,15 @@ class TabPage extends Component{
 		    })
         },10)
 	}
+	handleSetRef=(element,key)=>{
+       this[key]=element;
+	}
 	render(){
         const {slavePage}=this.props;
 		const {showMasker}=this.state;
 		return (
-           <div className={Styles.wrapper}>
-               <div className={Styles.mainPage} ref={(el)=>this.mainPage=el}>
+           <div className={'tabpage-wrapper'}>
+               <div className={'tabpage-mainPage'} ref={(el)=>this.handleSetRef(el,'mainPage')}>
 	               <Header showVisble={true} title={'TabPage'} leftComponent={()=>{return (<div onClick={this.handleTransform}><Icon config={{icon:'e912',text:'',iconStyle:{fontSize:'45px !important'}}}/></div>)} } />
 	               <div style={{background:'#eee'}}>
                         {
@@ -63,10 +68,10 @@ class TabPage extends Component{
                         }
 	               </div>
                </div>
-               <div className={Styles.slavePage} ref={(el)=>this.slavePage=el}>
+               <div className={'tabpage-slavePage'} ref={(el)=>this.handleSetRef(el,'slavePageRef')}>
                    {slavePage()}
                </div>
-               <div className={Styles.masker} style={{display:showMasker ? 'block' : 'none'}} onClick={this.handleMasker}>
+               <div className={'tabpage-masker'} style={{display:showMasker ? 'block' : 'none'}} onClick={this.handleMasker}>
 
                </div>
            </div>
