@@ -7,11 +7,18 @@ class Image extends Component{
 		super(props);
 	}
 
+    componentDidMount(){
+    
+    }
+    handleClick=()=>{
+        const {onImageClick}=this.props;
+    }
 	render(){
 	   const {imgSrc,imgStyle}=this.props;
        return (
            <div>
                <img src={imgSrc} style={imgStyle}/>
+
            </div> 
        )
 	}
@@ -19,5 +26,11 @@ class Image extends Component{
 Image.propTypes={
 	imgStyle:PropTypes.object,
 	imgSrc:PropTypes.string.isRequired,
+
+}
+Image.defaultProps={
+    imgSrc:'',
+    imgSrc:{},
+    
 }
 export default Image;

@@ -36,6 +36,7 @@ class Home extends Component{
             {title:'PageViewer',id:17},
             {title:'Popover',id:18},
             {title:'Badge',id:19},
+            {title:'Image',id:20},
 		]
 	}
   state={
