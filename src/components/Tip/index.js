@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+//import Styles from './index.less';
+import './index.less';
 
 
 class Tip extends Component{
@@ -42,8 +43,8 @@ class Tip extends Component{
 		const {visible}=this.state;
         const style={visibility:visible?'visible':'hidden'};
 		return (
-           <div className={Styles.wrapper} style={style}>
-             <div className={Styles.content}>
+           <div className={'tip-wrapper'} style={style}>
+             <div className={'tip-content'}>
                  {tipContent}
              </div>
            </div>

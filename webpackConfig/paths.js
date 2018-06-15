@@ -10,4 +10,6 @@ module.exports={
 	appEntry:resolvePath('src/example/index.js'),
 	appDist:resolvePath('dist'),
 	appHtml:resolvePath('src/example/public/index.html'),
+	appLib:resolvePath('lib'),
+	appPubEntry:resolvePath('src/index.js'),
 }

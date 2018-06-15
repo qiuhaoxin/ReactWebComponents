@@ -2,6 +2,7 @@ import React,{Component} from  'react';
 import PropTypes from 'prop-types';
 import Styles from  './index.less';
 
+const prefixCls="icon";
 class Icon extends Component{
 	constructor(props){
 		super(props);
@@ -36,8 +37,8 @@ class Icon extends Component{
 		const {iconStyle,textStyle,Style}=config;
 		const {icon,text}=this.state;
 		return (
-           <div className={Styles.wrapper} style={Style} onClick={this.handleIconClick}>
-                <div className={Styles['rwc-icon']} style={iconStyle} dangerouslySetInnerHTML={this.createMarkup(icon)}>
+           <div className={'icon-wrapper'} style={Style} onClick={this.handleIconClick}>
+                <div className={'rwc-icon'} style={iconStyle} dangerouslySetInnerHTML={this.createMarkup(icon)}>
                 </div>
                 <div style={textStyle}>{text}</div>
            </div>

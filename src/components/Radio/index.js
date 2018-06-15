@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import {is,fromJS} from 'immutable';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 
-
+const prefixCls="radio";
 class Radio extends Component{
 	constructor(props,context){
 		super(props,context);
@@ -34,9 +35,9 @@ class Radio extends Component{
       }
     }
 		return (
-			<div className={Styles.wrapper}>
-		        <label className={`${Styles.item} ${Styles[classNameStr]}`} onClick={()=>this.handleRadioChange(value)}>
-                   <input className={`${Styles['item-input']}`} name='radio' type='radio'/>
+			<div className={'radio-wrapper'}>
+		        <label className={`radio-item ${classNameStr}`} onClick={()=>this.handleRadioChange(value)}>
+                   <input className={`item-input`} name='radio' type='radio'/>
                    {
                       React.Children.map(this.props.children,function(child){
                       	 return (<span>{child}</span>)
@@ -97,7 +98,7 @@ class RadioGroup extends Component{
    }
    render(){
    	 return (
-       <div className={Styles.group}>
+       <div className={'radio-group'}>
           {
           	React.Children.map(this.props.children,function(child){
           		return (

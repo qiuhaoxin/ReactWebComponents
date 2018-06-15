@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import {is,fromJS} from 'immutable';
 
-import Styles from './index.less';
+import './index.less';
+
+const prefixCls='loading';
 
 class Dialog extends Component{
 	constructor(props){
@@ -24,17 +26,20 @@ class Dialog extends Component{
 		let style={};
 		style['visibility']=visible?'visible':'hidden';
 		for(let i=0;i<12;i++){
+			const classNameStr=`loading-leaf  loading-leaf-${i}`;
 			leafDivs.push(
-				<div key={'loadingLeaf'+i} className={`${Styles['loading-leaf']} ${Styles[`loading-leaf-${i}`]}`}>
+				//className={`${Styles['loading-leaf']} ${Styles[`loading-leaf-${i}`]}`}
+				<div key={'loadingLeaf'+i} className={classNameStr}>
 				</div>
 			);
 		}
 		return (
-           <div className={Styles.wrapper} style={style}>
-                <div className={Styles.loading}>
+		//className={Styles.wrapper}
+           <div className={'loading-wrapper'} style={style}>
+                <div className={'loading'}>
                      {leafDivs}
                 </div>
-                <p className={Styles['loading-tip']}>{desc}</p>
+                <p className={`loading-tip`}>{desc}</p>
            </div>
 		)
 	}
@@ -48,3 +53,8 @@ Dialog.defaultProps={
    desc:'数据加载中，请稍后...',
 }
 export default Dialog;
+
+/*
+*className={Styles.loading}
+*className={Styles['loading-tip']}
+*/

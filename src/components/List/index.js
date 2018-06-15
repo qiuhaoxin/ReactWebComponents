@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
 import InfiniteScroll from 'react-infinite-scroller';
 
 //弹框列表

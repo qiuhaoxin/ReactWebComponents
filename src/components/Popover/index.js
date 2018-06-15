@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
+// import Styles from './index.less';
+import './index.less';
 
+const prefixCls="popover";
 class Popover extends Component{
 	constructor(props){
 		super(props);
@@ -47,17 +49,16 @@ class Popover extends Component{
 	render(){
 		const {data,Style,children,content,align,placement}=this.props;
         const {rect,visible}=this.state;
-		let contentStyle={left:`${rect.left - (-this.contentRect.width / 2)}px`,top:`${rect.height - (-10)}px`,visibility:visible?'visible':'hidden'};
-		console.log("contentStyle is "+JSON.stringify(contentStyle));
+		let contentStyle={left:`${rect.left - (-this.contentRect.width)/2}px`,top:`${rect.height - (-10)}px`,visibility:visible?'visible':'hidden'};
 		return (
-            <div className={Styles.wrapper} ref={el=>this.wrapper=el}>  
-               <div onClick={this.handleClick} className={Styles.children}>
+            <div className={'popover-wrapper'} ref={el=>this.wrapper=el}>  
+               <div onClick={this.handleClick} className={'popover-children'}>
                   {children}
                </div>
-               <div className={Styles.content} style={contentStyle} ref={el=>this.contentWrapper=el}>
+               <div className={'popover-content'} style={contentStyle} ref={el=>this.contentWrapper=el}>
                   {content()}
                </div>
-               <div className={Styles.masker} style={{display:visible ? 'block' : 'none'}} onClick={this.handleMaskerClick}>
+               <div className={'popover-masker'} style={{display:visible ? 'block' : 'none'}} onClick={this.handleMaskerClick}>
 
                </div>
             </div>

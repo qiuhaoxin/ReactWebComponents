@@ -1,8 +1,10 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import Styles from './index.less';
-import {isEmptyObject} from '../../utils/util';
 
+import {isEmptyObject} from '../../utils/util';
+import './index.less';
+
+const prefixCls="steper";
 class Stepper extends Component{
 	constructor(props){
 		super(props);
@@ -96,15 +98,15 @@ class Stepper extends Component{
        rightDisabled=rightIndicatorDisabled ? "right-indicator-disabled" : '';
 
        return (
-           <div className={Styles.wrapper}>
-               <div className={`${Styles.leftIndicator} ${Styles[leftDisabled]}`} onClick={this.handleReduceClikc}>
+           <div className={'stepper-wrapper'}>
+               <div className={`leftIndicator ${leftDisabled}`} onClick={this.handleReduceClikc}>
 
                </div>
 
-               <div className={Styles.content}>
+               <div className={'stepper-content'}>
                     {numberContent}
                </div>
-               <div className={`${Styles.rightIndicator} ${Styles[rightDisabled]}`} onClick={this.handleAddClick}>
+               <div className={`rightIndicator ${rightDisabled}`} onClick={this.handleAddClick}>
 
                </div>
            </div>

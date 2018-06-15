@@ -1,18 +1,18 @@
 import React,{Component} from 'react';
 import {Redirect,withRouter} from 'react-router-dom';
 import {is,fromJS} from 'immutable';
-import Styles from './index.less';
-import NineCell from '../../../components/NineCell/index.js';
+//import Styles from './index.less';
+import './index.less';
+ import NineCell from '../../../components/NineCell/index.js';
 
-import Dialog from '../../../components/Dialog/index.js';
+ import Dialog from '../../../components/Dialog/index.js';
+ import Loading from '../../../components/Loading/index.js';
 
-import Loading from '../../../components/Loading/index.js';
+ import Tip from  '../../../components/Tip/index.js';//提示toask
 
-import Tip from  '../../../components/Tip/index.js';//提示toask
+// import Stepper from '../../../components/Stepper/index.js';//
 
-import Stepper from '../../../components/Stepper/index.js';//
-
-const NineCellItem=NineCell.Item;
+ const NineCellItem=NineCell.Item;
 class Home extends Component{
 	constructor(props){
 		super(props);
@@ -36,13 +36,14 @@ class Home extends Component{
             {title:'PageViewer',id:17},
             {title:'Popover',id:18},
             {title:'Badge',id:19},
+            {title:'Image',id:20},
 		]
 	}
-    state={
-        showDialog:false,
-        showLoading:false,
-        showTip:false,
-    }
+  state={
+      showDialog:false,
+      showLoading:false,
+      showTip:false,
+  }
 	componentDidMount(){
 
 	}
@@ -86,28 +87,49 @@ class Home extends Component{
 	render(){
     const {showDialog,showLoading,showTip}=this.state;
 		return (
-          <div className={Styles.wrapper}>
-             <NineCell data={this.nineCellData} columnNum={4}
+          <div className={'home-wrapper'}>
+              <NineCell data={this.nineCellData} columnNum={4}
                 renderItem={
-                	(item)=>{
-                		return (
+                 (item)=>{
+                   return (
                             <NineCellItem key={item.id} itemData={item} itemClick={this.handleNineCellClick}>
                                <span>{item.title}</span>
                             </NineCellItem>
-                		)
-                	}
+                   )
+                 }
                 }
              >
              </NineCell>
-             <Dialog title="提醒" content="请明天到招行交100块！" visible={this.state.showDialog} 
-             onOK={this.handleDialogOK} onCancel={this.handleDialogCancel}/>
+            <Dialog title="提醒" content="请明天到招行交100块！" visible={this.state.showDialog} 
+              onOK={this.handleDialogOK} onCancel={this.handleDialogCancel} />
 
-             <Loading visible={showLoading} desc="加载中..."/>
+            <Loading visible={showLoading} desc="加载中..."/>
 
-             <Tip visible={showTip} tipContent="提交数据成功,请联系管理员到数据库后天查看" type='success' />
-          </div>
-		)
+            <Tip visible={showTip} tipContent="提交数据成功,请联系管理员到数据库后天查看" type='success' />
+           </div>
+      		)
 	}
 }
 
 export default withRouter(Home);
+
+/*
+*
+             // <NineCell data={this.nineCellData} columnNum={4}
+             //    renderItem={
+             //     (item)=>{
+             //       return (
+             //                <NineCellItem key={item.id} itemData={item} itemClick={this.handleNineCellClick}>
+             //                   <span>{item.title}</span>
+             //                </NineCellItem>
+             //       )
+             //     }
+             //    }
+             // >
+             // </NineCell>
+            //  <Dialog title="提醒" content="请明天到招行交100块！" visible={this.state.showDialog} 
+            //  onOK={this.handleDialogOK} onCancel={this.handleDialogCancel}/>
+            // <Loading visible={showLoading} desc="加载中..."/>
+            //  <Tip visible={showTip} tipContent="提交数据成功,请联系管理员到数据库后天查看" type='success' />
+             //<Loading visible={showLoading} desc="加载中..."/>
+*/
