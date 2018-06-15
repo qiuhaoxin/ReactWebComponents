@@ -30,6 +30,8 @@ import Badge from '../../../components/Badge/index.js';
 
 import Image from '../../../components/Image/index.js';
 
+import View from '../../../components/View/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 import List from '../../../components/List/index.js';
@@ -80,6 +82,7 @@ class Detial extends Component{
     showPopover:false,
     showBadge:false,
     showImage:false,
+    showView:false,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -142,6 +145,9 @@ class Detial extends Component{
       case '20':
              this.changeState('showImage',true);
       break;
+      case '21':
+             this.changeState('showView',true);
+      break;
       default:
 
       break;
@@ -183,10 +189,15 @@ class Detial extends Component{
     renderTagView=()=>{
 
     }
+    handleViewLoadMore=(fn)=>{
+        setTimeout(function(){
+           if(fn)fn();
+        },2000)
+    }
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -315,6 +326,18 @@ class Detial extends Component{
               </div>
               <div style={{display:showImage ? 'block' : 'none'}}>
                   <Image imgSrc={personImg} imgStyle={{width:'100px',height:'100px'}}/>
+              </div>
+              <div style={{display:showView ? 'block' : 'none'}}>
+                  <View 
+                    onLoadMore={this.handleViewLoadMore}
+                  >
+                     <div>
+                        test view
+                     </div>
+                     <div>
+                         <Button type='primary'>测试</Button>
+                     </div>
+                  </View>
               </div>
 
           </div>
