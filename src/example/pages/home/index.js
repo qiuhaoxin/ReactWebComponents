@@ -37,6 +37,7 @@ class Home extends Component{
             {title:'Popover',id:18},
             {title:'Badge',id:19},
             {title:'Image',id:20},
+            {title:'Carouset',id:22},
 		]
 	}
   state={

@@ -30,6 +30,8 @@ import Badge from '../../../components/Badge/index.js';
 
 import Image from '../../../components/Image/index.js';
 
+import Carouset from '../../../components/Carouset/index.js';
+
 const RadioGroup=Radio.RadioGroup;
 
 import List from '../../../components/List/index.js';
@@ -80,6 +82,7 @@ class Detial extends Component{
     showPopover:false,
     showBadge:false,
     showImage:false,
+    showCarouset:false,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -142,6 +145,9 @@ class Detial extends Component{
       case '20':
              this.changeState('showImage',true);
       break;
+      case '22':
+             this.changeState('showCarouset',true);
+      break;
       default:
 
       break;
@@ -186,7 +192,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showCarouset}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -315,6 +321,13 @@ class Detial extends Component{
               </div>
               <div style={{display:showImage ? 'block' : 'none'}}>
                   <Image imgSrc={personImg} imgStyle={{width:'100px',height:'100px'}}/>
+              </div>
+              <div>
+                  <Carouset 
+
+                  >
+
+                  </Carouset>
               </div>
 
           </div>
