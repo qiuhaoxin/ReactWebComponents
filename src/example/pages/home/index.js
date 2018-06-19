@@ -37,7 +37,11 @@ class Home extends Component{
             {title:'Popover',id:18},
             {title:'Badge',id:19},
             {title:'Image',id:20},
+<<<<<<< HEAD
             {title:'Carouset',id:22},
+=======
+            {title:'View',id:21},
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
 		]
 	}
   state={
@@ -107,6 +111,7 @@ class Home extends Component{
             <Loading visible={showLoading} desc="加载中..."/>
 
             <Tip visible={showTip} tipContent="提交数据成功,请联系管理员到数据库后天查看" type='success' />
+            
            </div>
       		)
 	}

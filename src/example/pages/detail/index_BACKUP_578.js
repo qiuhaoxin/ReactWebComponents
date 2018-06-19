@@ -30,7 +30,11 @@ import Badge from '../../../components/Badge/index.js';
 
 import Image from '../../../components/Image/index.js';
 
+<<<<<<< HEAD
+import Carouset from '../../../components/Carouset/index.js';
+=======
 import View from '../../../components/View/index.js';
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
 
 const RadioGroup=Radio.RadioGroup;
 
@@ -83,7 +87,11 @@ class Detial extends Component{
     showPopover:false,
     showBadge:false,
     showImage:false,
+<<<<<<< HEAD
+    showCarouset:false,
+=======
     showView:false,
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -146,8 +154,13 @@ class Detial extends Component{
       case '20':
              this.changeState('showImage',true);
       break;
+<<<<<<< HEAD
+      case '22':
+             this.changeState('showCarouset',true);
+=======
       case '21':
              this.changeState('showView',true);
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
       break;
       default:
 
@@ -198,7 +211,11 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
+<<<<<<< HEAD
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showCarouset}=this.state;
+=======
       showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList}=this.state;
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -328,6 +345,14 @@ class Detial extends Component{
               <div style={{display:showImage ? 'block' : 'none'}}>
                   <Image imgSrc={personImg} imgStyle={{width:'100px',height:'100px'}}/>
               </div>
+<<<<<<< HEAD
+              <div>
+                  <Carouset 
+
+                  >
+
+                  </Carouset>
+=======
               <div style={{display:showView ? 'block' : 'none'}}>
                   <View 
                     onLoadMore={this.handleViewLoadMore}
@@ -365,6 +390,7 @@ class Detial extends Component{
                        text2
                     </ListItem>
                   </List>
+>>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
               </div>
 
           </div>
