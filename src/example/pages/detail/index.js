@@ -351,7 +351,9 @@ class Detial extends Component{
                   </List>
 
                   <List
-
+                    renderHeader={
+                      ()=><div>test</div>
+                    }
                   >
                     <ListItem
                        arrow={'horizontal'}
