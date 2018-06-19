@@ -37,11 +37,8 @@ class Home extends Component{
             {title:'Popover',id:18},
             {title:'Badge',id:19},
             {title:'Image',id:20},
-<<<<<<< HEAD
-            {title:'Carouset',id:22},
-=======
             {title:'View',id:21},
->>>>>>> 5008bec73b5e74a5b12f58e63f50c1f6dc856e8d
+            {title:'Carouset',id:22},
 		]
 	}
   state={
