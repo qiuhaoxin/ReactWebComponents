@@ -35,6 +35,7 @@ import View from '../../../components/View/index.js';
 const RadioGroup=Radio.RadioGroup;
 
 import List from '../../../components/List/index.js';
+const ListItem=List.Item;
 
 const personImg=require('../../images/haoxin_qiu.jpg');
 
@@ -197,7 +198,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage,showView}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -338,6 +339,32 @@ class Detial extends Component{
                          <Button type='primary'>测试</Button>
                      </div>
                   </View>
+              </div>
+
+              <div style={{display:showList ? 'block' : 'none'}}>
+                  <List
+                    renderHeader={()=><div>header</div>}
+                  >
+                     <ListItem>
+                         This is list item
+                     </ListItem>
+                  </List>
+
+                  <List
+
+                  >
+                    <ListItem
+                       arrow={'horizontal'}
+                       thumb={'https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png'}
+                    >
+                       text
+                    </ListItem>
+                    <ListItem
+                       arrow={'horizontal'}
+                    >
+                       text2
+                    </ListItem>
+                  </List>
               </div>
 
           </div>
