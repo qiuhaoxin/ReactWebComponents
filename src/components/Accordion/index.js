@@ -10,7 +10,11 @@ class Accordion extends Component{
 
 	}
 	render(){
+     return (
+          <div>
 
+          </div>
+     )
 	}
 }
 Accordion.defaultProps={
@@ -19,6 +23,20 @@ Accordion.defaultProps={
 Accordion.propTypes={
 
 }
+
+class Panel extends Component{
+  constructor(props){
+     super(props);
+  }
+  render(){
+     return (
+       <div>
+
+       </div>
+     )
+  }
+}
+Accordion.Panel=Panel;
 export default Accordion;
 
 
