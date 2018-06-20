@@ -345,7 +345,7 @@ class Detial extends Component{
                   <List
                     renderHeader={()=><div>header</div>}
                   >
-                     <ListItem>
+                     <ListItem extra={'extra content'}>
                          This is list item
                      </ListItem>
                   </List>
@@ -363,6 +363,7 @@ class Detial extends Component{
                     </ListItem>
                     <ListItem
                        arrow={'horizontal'}
+                       extra={'extra content'}
                     >
                        text2
                     </ListItem>

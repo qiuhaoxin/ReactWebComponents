@@ -6,18 +6,59 @@
    padding:5px 12px;
 }
 .list-content{
-	border-top:1px solid #eee;
-	border-bottom:1px solid #eee;
+  position:relative;
+  &:before{
+     content:'';position:absolute;left:0;height:1px;right:auto;width:100%;top:0;bottom:auto;height:1px;transform-origin:50% 50%;
+     transform:scaleY(.5);background-color:#ddd;z-index:1;
+  }
+  &:after{
+     content:'';position:absolute;left:0;height:1px;right:auto;width:100%;top:auto;bottom:0;height:1px;transform-origin:50% 50%;
+     transform:scaleY(.5);background-color:#ddd;z-index:1;
+  }
+  & .list-item{
+      position:relative;padding-left:15px;display:flex;min-height:44px;vertical-align:middle;align-items:center;overflow:hidden;transition:background-color .2s;background-color:#fff;align-items:center;
+      &:last-child{
+         border:none;
+      }
+      &:last-child{
+        border:none;
+      }
+      & img{
+         width:22px;height:22px;vertical-align:middle;
+      }
+      &-thumb{
+         margin-right:15px;
+      }
+      &-line{
+        display:flex;flex:1;padding-right:15px;overflow:hidden;position:relative;align-self:stretch;-webkit-align-self:stretch;
+        align-items:center;
+    
+        & .list-item-content{
+           display:flex;flex:1;padding-top:7px;padding-bottom:7px;line-height:1.5;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:#000;text-align:left;font-size:17px;
+        }
+        & .list-item-extra{
+           text-align:right;
+           flex-basis:36%;color:#888;font-size:16px;
+        }
+        & .list-item-arrow{
+           width:15px;height:15px;margin-left:8px;display:flex;align-item:center;
+           position:relative;
+           &-horizontal{
+              &:before{
+                content:'';position:absolute;border-left:8px solid #999;border-top:8px solid transparent;border-bottom:8px solid transparent;top:0;left:3px;
+              }
+
+              &:after{
+                content:'';position:absolute;border-left:8px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent;top:0;left:1px;
+              }
+           }
+        }
+
+        &:after{
+          content:'';position:absolute;left:0;width:100%;bottom:0;background-color:#ddd;right:auto;top:auto;height:1px;
+        }
+      }
+
+  }
 }
-.list-item{
-    margin:0 12px;position:relative;border-bottom:1px solid #eee;padding:7px 0px;
-    &:last-child{
-       border:none;
-    }
-    & img{
-       width:22px;height:22px;
-    }
-}
-.arrow{
-	
-}
+

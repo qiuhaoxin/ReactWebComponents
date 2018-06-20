@@ -41,10 +41,19 @@ List.propTypes={
 const listItemPrefixCls='list-item';
 class ListItem extends Component{
      constructor(props){
-     	super(props);
+     	  super(props);
+     }
+     componentDidMount(){
+
      }
      render(){
-      const {children,arrow,thumb}=this.props;
+
+      const {children,arrow,thumb,extra}=this.props;
+      const arrowCls=classnames({
+         [`${listItemPrefixCls}-arrow`]:arrow,
+         [`${listItemPrefixCls}-arrow-horizontal`]:arrow=='horizontal',
+      })
+      console.log("arrowcls is "+arrowCls);
      	return (
            <div className={`${listItemPrefixCls}`}>
               {
@@ -54,14 +63,19 @@ class ListItem extends Component{
                   </div>
                  ) : null 
               }
-              {
-                 React.Children.map(this.props.children,(child)=>{
-                    return (<div>{child}</div>)
-                 })
-              }
-              {
-                 arrow ? <div className={'arrow'}></div> : null
-              }
+              <div className={`${listItemPrefixCls}-line`}>
+                {
+                   React.Children.map(this.props.children,(child)=>{
+                      return (<div className={`${listItemPrefixCls}-content`}>{child}</div>)
+                   })
+                }
+                {
+                   extra ? <div className={`${listItemPrefixCls}-extra`}>{extra}</div> : null
+                }
+                {
+                   arrow ? <div className={arrowCls}></div> : null
+                }
+              </div>
            </div>
      	)
      }
