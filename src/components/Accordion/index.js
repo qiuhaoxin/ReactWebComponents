@@ -1,47 +1,8 @@
-import React,{Component} from 'react';
-import PropTypes from 'prop-types';
-import Styles from './index.less';
+import Collapse from './Collapse';
 
-class Accordion extends Component{
-	constructor(props){
-		super(props);
-	}
-	componentDidMount(){
+export default Collapse;
 
-	}
-  getItems=()=>{
-     
-  }
-	render(){
-     return (
-          <div>
-
-          </div>
-     )
-	}
-}
-Accordion.defaultProps={
-   
-}
-Accordion.propTypes={
-
-}
-
-class AccordionPanel extends Component{
-  constructor(props){
-     super(props);
-  }
-  render(){
-    
-     return (
-       <div>
-
-       </div>
-     )
-  }
-}
-Accordion.Panel=AccordionPanel;
-export default Accordion;
+export const Panel=Collapse.CollapsePanel;
 
 
 
