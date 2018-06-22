@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import InfiniteScroll from 'react-infinite-scroller';
 import './index.less';
 import classnames from 'classnames';
 
@@ -19,7 +18,7 @@ class List extends Component{
    // console.log("children is in list is "+children);
 		return (
            <div className={`${prefixCls}-wrapper`}>
-              <div className={`${prefixCls}-header`}>{renderHeader ? renderHeader() : null}</div>
+              {renderHeader ? <div className={`${prefixCls}-header`}>{renderHeader()}</div> : null}
               <div className={`${prefixCls}-content`}>
                 {children}
               </div>

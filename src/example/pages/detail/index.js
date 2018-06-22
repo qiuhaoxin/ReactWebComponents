@@ -32,6 +32,9 @@ import Image from '../../../components/Image/index.js';
 
 import View from '../../../components/View/index.js';
 
+import Collapse,{Panel} from '../../../components/Accordion/index.js';
+
+
 const RadioGroup=Radio.RadioGroup;
 
 import List from '../../../components/List/index.js';
@@ -84,6 +87,7 @@ class Detial extends Component{
     showBadge:false,
     showImage:false,
     showView:false,
+    showAccordion:false,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -198,7 +202,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -369,7 +373,33 @@ class Detial extends Component{
                     </ListItem>
                   </List>
               </div>
-
+              <div>
+                 <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
+                     <Panel header={"test for Accordion"} arrow={true}>
+                         <List>
+                            <ListItem >
+                                 text
+                            </ListItem>
+                            <ListItem >
+                                 text1
+                            </ListItem>
+                            <ListItem >
+                                 text2
+                            </ListItem>
+                            <ListItem >
+                                 text3
+                            </ListItem>
+                         </List>
+                     </Panel>
+                     <Panel header={"test for Accordion2"} arrow={true}>
+                         <List>
+                            <ListItem>
+                                 text 2
+                            </ListItem>
+                         </List>
+                     </Panel>
+                 </Collapse>
+              </div>
           </div>
        )
 	}

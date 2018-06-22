@@ -12,17 +12,15 @@ class PanelContent extends Component{
 	}
 	render(){
 	    const {forceRender,isActive,prefixCls,children,destroyInactivePanel}=this.props;
-
 	    this._isActive=forceRender || isActive;
-	    if(!this._isActive)return;
+	    if(!this._isActive)return null;
 	    const contentCls=classNames({
 	    	[`${prefixCls}-content`]:true,
 	    	[`${prefixCls}-content-active`]:isActive,
 	    	[`${prefixCls}-content-inactive`]:!isActive,
 	    });
-	    const child=!forceRender && !isActive && destroyInactivePanel ? null :
-	     <div className{`${prefixCls}-content-box`}>{children}</div>;
-
+	    const child=!forceRender && !isActive && destroyInactivePanel ? null : <div className={`${prefixCls}-content-box`}>{children}</div>
+        console.log("child is "+child);
         return (
            <div className={contentCls}>
              {child}
@@ -30,6 +28,8 @@ class PanelContent extends Component{
         )
 	}
 }
+
+export default PanelContent;
 
 PanelContent.propTypes={
 	isActive:PropTypes.bool,

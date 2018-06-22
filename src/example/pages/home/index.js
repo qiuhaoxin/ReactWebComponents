@@ -39,6 +39,8 @@ class Home extends Component{
             {title:'Image',id:20},
             {title:'View',id:21},
             {title:'Carouset',id:22},
+            {title:'Accordion',id:23},
+            
 		]
 	}
   state={
