@@ -32,6 +32,12 @@ import Image from '../../../components/Image/index.js';
 
 import View from '../../../components/View/index.js';
 
+import Collapse from '../../../components/Accordion/index.js';
+
+import ScrollerView from '../../../components/ListView/index.js';
+
+const Panel=Collapse.CollapsePanel;
+
 const RadioGroup=Radio.RadioGroup;
 
 import List from '../../../components/List/index.js';
@@ -84,6 +90,8 @@ class Detial extends Component{
     showBadge:false,
     showImage:false,
     showView:false,
+    showAccordion:false,
+    showListView:false,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -149,6 +157,13 @@ class Detial extends Component{
       case '21':
              this.changeState('showView',true);
       break;
+
+      case '23':
+            this.changeState('showAccordion',true);
+      break;
+      case '24':
+           this.changeState('showListView',true);
+      break;
       default:
 
       break;
@@ -198,7 +213,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -369,7 +384,24 @@ class Detial extends Component{
                     </ListItem>
                   </List>
               </div>
+              <div style={{display:showAccordion ? 'block' : 'none'}}>
+                  <Collapse>
+                      <Panel header={'test Accordion'}>
+                          <List>
+                             <ListItem extra={'extra content'}>
+                                 This is list item
+                             </ListItem>
+                          </List>
+                      </Panel>
+                  </Collapse>
+              </div>
+              <div style={{display:showListView ? 'block' : 'none'}}>
+                  <ScrollerView
+                     
+                  >
 
+                  </ScrollerView>
+              </div>
           </div>
        )
 	}

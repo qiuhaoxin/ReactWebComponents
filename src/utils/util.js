@@ -36,3 +36,23 @@ export function isEmptyObject(obj){
      }
      return true;
 }
+
+export function throttle(fn,delay){
+    let delayFlag=true;
+    let firstInvoke=true;
+
+    return function _ttrottle(e){
+       if(delayFlag){
+          delayFlag=false;
+          setTimeout(()=>{
+            delayFlag=true;
+            fn(e);
+          },delay)
+
+       }
+       if(firstInvoke){
+          fn(e);
+          firstInvoke=false;
+       }
+    }
+}
