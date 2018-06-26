@@ -32,5 +32,4 @@ export const Panel=Collapse.CollapsePanel;
 //     );
 //   }
 // }
-
 // ReactDOM.render(<AccordionExmple />, mountNode);

@@ -23,3 +23,12 @@ export {default as Stepper} from './Stepper/index.js';
 export {default as Switch} from './Switch/index.js';
 export {default as TabPage} from './TabPage/index.js';
 export {default as Tip} from './Tip/index.js';
+
+
+export {default as List} from './List/index.js';
+
+export {default as Accordion} from './Accordion/index.js';
+
+export {default as View} from './View/index.js';
+
+

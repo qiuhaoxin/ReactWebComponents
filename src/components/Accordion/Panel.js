@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'class-names';
+import classNames from 'classnames';
 import Animate from 'rc-animate';
 import PanelContent from './PanelContent';
 
@@ -19,7 +19,11 @@ class CollapsePanel extends Component{
 	}
 	render(){
 		const {className,id,style,prefixCls,header,headerClass,children,isActive,
-			showArrow,destroyInactivePanel,disabled,accordion,forceRender,openAnimation}=this.props;
+			showArrow,destroyInactivePanel,disabled,accordion,forceRender,openAnimation,arrow,arrowStyle}=this.props;
+      console.log("arrow is "+arrow);
+    const arrowCls=classNames({
+       [`${prefixCls}-header-arrow`]:arrow,
+    })  
 		const headerClassName=classNames({
 			[headerClass]:headerClass,
 		},`${prefixCls}-header`);	
@@ -31,11 +35,13 @@ class CollapsePanel extends Component{
 		return (
           <div className={itemCls} style={style} id={id}>
               <div className={headerClassName} onClick={this.handleItemClick}
+              aria-expanded={`${isActive}`}
               >
+                  {arrow && <span className={arrowCls} style={arrowStyle}></span>}
                   {header}
               </div>
               <Animate
-                 showProp='isActive',
+                 showProp='isActive'
                  exclusive
                  component=""
                  animation={openAnimation}
@@ -45,7 +51,6 @@ class CollapsePanel extends Component{
                     isActive={isActive}
                     destroyInactivePanel={destroyInactivePanel}
                     forceRender={forceRender}
-                    
                 >
                    {children}
                 </PanelContent>
@@ -53,6 +58,12 @@ class CollapsePanel extends Component{
           </div>
 		)
 	}
+}
+CollapsePanel.defaultProps={
+    arrow:false,
+}
+CollapsePanel.propTypes={
+    arrow:PropTypes.bool,
 }
 
 export default CollapsePanel;

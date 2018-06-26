@@ -37,6 +37,8 @@ import Collapse from '../../../components/Accordion/index.js';
 import ScrollerView from '../../../components/ListView/index.js';
 
 const Panel=Collapse.CollapsePanel;
+import Collapse,{Panel} from '../../../components/Accordion/index.js';
+
 
 const RadioGroup=Radio.RadioGroup;
 
@@ -401,6 +403,32 @@ class Detial extends Component{
                   >
 
                   </ScrollerView>
+              <div>
+                 <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
+                     <Panel header={"test for Accordion"} arrow={true}>
+                         <List>
+                            <ListItem >
+                                 text
+                            </ListItem>
+                            <ListItem >
+                                 text1
+                            </ListItem>
+                            <ListItem >
+                                 text2
+                            </ListItem>
+                            <ListItem >
+                                 text3
+                            </ListItem>
+                         </List>
+                     </Panel>
+                     <Panel header={"test for Accordion2"} arrow={true}>
+                         <List>
+                            <ListItem>
+                                 text 2
+                            </ListItem>
+                         </List>
+                     </Panel>
+                 </Collapse>
               </div>
           </div>
        )
