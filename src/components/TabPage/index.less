@@ -1,14 +1,14 @@
 .tabpage-wrapper{
-	position:absolute;left:0;top:0;height:100%;width:100%;
+	position:absolute;left:0;top:0;height:100%;width:100%;overflow:hidden;z-index:100;
 
 	& .tabpage-mainPage{
 	   position:absolute;left:0;width:100%;top:0;height:100%;
-	   box-shadow:#929292 0px 0px 13px 1px;
+	   box-shadow:#929292 0px 0px 13px 1px;z-index:100;overflow:hidden;
 	}
 
 	& .tabpage-slavePage{
 	  position:absolute;left:0;width:80%;top:0;height:100%;
-	  transform:translate3d(-100%,0,0);
+	  transform:translate3d(-100%,0,0);z-index:100;
 	}
 	& .tabpage-masker{
 	   position:absolute;left:80%;background:rgba(0,0,0,.0);

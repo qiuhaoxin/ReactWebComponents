@@ -153,6 +153,9 @@ class Detial extends Component{
       case '21':
              this.changeState('showView',true);
       break;
+      case '23':
+            this.changeState('showAccordion',true);
+      break;
       default:
 
       break;
@@ -301,12 +304,17 @@ class Detial extends Component{
                    <TabPage
                       slavePage={this.handleRenderSlavePage}
                    >
-                      <div>
-                          Segment
-                      </div>
-                      <div>
-                         <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
-                      </div>
+                      <View>
+                        <div style={{marginTop:'50px'}}>
+                            Segment
+                        </div>
+                        <div style={{marginTop:'250px'}}>
+                           <Segment data={this.segmentData} activeEl={this.segmentData[0].id}/>
+                        </div>
+                        <div style={{marginTop:'450px'}}>
+                           <Button type='primary'>Test</Button>
+                        </div>
+                      </View>
                    </TabPage>
               </div>
               <div style={{'display':showHeader ? 'block' : 'none'}}>
@@ -336,10 +344,10 @@ class Detial extends Component{
                   <View 
                     onLoadMore={this.handleViewLoadMore}
                   >
-                     <div>
+                     <div style={{marginTop:'30px'}}>
                         test view
                      </div>
-                     <div>
+                     <div style={{marginTop:'80px'}}>
                          <Button type='primary'>测试</Button>
                      </div>
                   </View>
@@ -373,7 +381,7 @@ class Detial extends Component{
                     </ListItem>
                   </List>
               </div>
-              <div>
+              <div style={{display:showAccordion ? 'block' : 'none'}}>
                  <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
                      <Panel header={"test for Accordion"} arrow={true}>
                          <List>

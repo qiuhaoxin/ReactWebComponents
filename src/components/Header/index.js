@@ -28,10 +28,11 @@ class Header extends Component{
       )
     }
     render(){
-    	const {title,showVisible,leftComponent,rightComponent}=this.props;
+    	const {title,showVisible,leftComponent,rightComponent,headerStyle}=this.props;
     	const wrapperStyle={display:showVisible ? 'inline-flex' : 'hidden'};
+
     	return (
-           <div className={'header-wrapper'} style={wrapperStyle}>
+           <div className={'header-wrapper'} style={headerStyle}>
                 <div className={'header-left'}>
                      {
                      	leftComponent!=null ? leftComponent() : this.defaultLeft()

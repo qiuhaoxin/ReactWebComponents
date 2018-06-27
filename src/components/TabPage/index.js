@@ -13,6 +13,10 @@ class TabPage extends Component{
 	}
 	state={
 		showMasker:false,
+		headerStyle:{
+			position:'fixed',
+			left:0,right:0,top:0,'zIndex':104,
+		},
 	}
 	handleTransform=()=>{
 		const _this=this;
@@ -22,6 +26,12 @@ class TabPage extends Component{
 	    	this.slavePageRef.style['transform']="translate(0,0)";
 	    	this.slavePageRef.style['transition']="transform .1s ease";
 	    }
+	    // if(this.allPage){
+	    // 	this.allPage.style['transform']="translate(80%,0)";
+	    // 	this.allPage.style['transition']="transform .1s ease";
+	    // 	this.slavePageRef.style['transform']="translate(0,0)";
+	    //  	this.slavePageRef.style['transition']="transform .1s ease";
+	    // }
         setTimeout(function(){
 		    _this.setState(preState=>{
 		    	return ({
@@ -38,6 +48,13 @@ class TabPage extends Component{
 	    	this.slavePageRef.style['transform']="translate(-100%,0)";
 	    	this.slavePageRef.style['transition']="transform .1s ease";
 		}
+		// const headerStyle={
+		// 	position:'fixed',
+		// 	left:0,right:0,top:0,'zIndex':105,
+		// }
+		// this.setState({
+  //          headerStyle
+		// })
 		setTimeout(function(){
 		    _this.setState(preState=>{
 		    	return ({
@@ -51,12 +68,12 @@ class TabPage extends Component{
 	}
 	render(){
         const {slavePage}=this.props;
-		const {showMasker}=this.state;
+		const {showMasker,headerStyle}=this.state;
 		return (
-           <div className={'tabpage-wrapper'}>
+           <div className={'tabpage-wrapper'} ref={el=>this.handleSetRef(el,'allPage')}>
                <div className={'tabpage-mainPage'} ref={(el)=>this.handleSetRef(el,'mainPage')}>
-	               <Header showVisble={true} title={'TabPage'} leftComponent={()=>{return (<div onClick={this.handleTransform}><Icon config={{icon:'e912',text:'',iconStyle:{fontSize:'45px !important'}}}/></div>)} } />
-	               <div style={{background:'#eee'}}>
+	               <Header headerStyle={headerStyle} showVisble={true} title={'TabPage'} leftComponent={()=>{return (<div onClick={this.handleTransform}><Icon config={{icon:'e912',text:'',iconStyle:{fontSize:'45px !important'}}}/></div>)} } />
+	               <div style={{background:'#eee',position:'absolute',top:'44px',right:'0',left:'0','zIndex':'101'}}>
                         {
                         	React.Children.map(this.props.children,(child)=>{
                         	    return (
