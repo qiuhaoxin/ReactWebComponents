@@ -32,6 +32,11 @@ import Image from '../../../components/Image/index.js';
 
 import View from '../../../components/View/index.js';
 
+import Collapse from '../../../components/Accordion/index.js';
+
+import ScrollerView from '../../../components/ListView/index.js';
+
+const Panel=Collapse.CollapsePanel;
 import Collapse,{Panel} from '../../../components/Accordion/index.js';
 
 
@@ -88,6 +93,7 @@ class Detial extends Component{
     showImage:false,
     showView:false,
     showAccordion:false,
+    showListView:false,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -153,8 +159,16 @@ class Detial extends Component{
       case '21':
              this.changeState('showView',true);
       break;
+
       case '23':
             this.changeState('showAccordion',true);
+      break;
+
+      case '23':
+            this.changeState('showAccordion',true);
+      break;
+      case '24':
+           this.changeState('showListView',true);
       break;
       default:
 
@@ -382,6 +396,24 @@ class Detial extends Component{
                   </List>
               </div>
               <div style={{display:showAccordion ? 'block' : 'none'}}>
+                  <Collapse>
+                      <Panel header={'test Accordion'}>
+                          <List>
+                             <ListItem extra={'extra content'}>
+                                 This is list item
+                             </ListItem>
+                          </List>
+                      </Panel>
+                  </Collapse>
+              </div>
+              <div style={{display:showListView ? 'block' : 'none'}}>
+                  <ScrollerView
+                     
+                  >
+
+                  </ScrollerView>
+              </div>
+              <div>
                  <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
                      <Panel header={"test for Accordion"} arrow={true}>
                          <List>

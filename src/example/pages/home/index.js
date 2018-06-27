@@ -40,7 +40,7 @@ class Home extends Component{
             {title:'View',id:21},
             {title:'Carouset',id:22},
             {title:'Accordion',id:23},
-            
+            {title:'ListView',id:24},
 		]
 	}
   state={
