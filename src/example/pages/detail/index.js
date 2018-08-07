@@ -36,8 +36,8 @@ import Collapse from '../../../components/Accordion/index.js';
 
 import ScrollerView from '../../../components/ListView/index.js';
 
-const Panel=Collapse.CollapsePanel;
-import Collapse,{Panel} from '../../../components/Accordion/index.js';
+ const Panel=Collapse.CollapsePanel;
+//import Collapse,{Panel} from '../../../components/Accordion/index.js';
 
 
 const RadioGroup=Radio.RadioGroup;
@@ -163,10 +163,6 @@ class Detial extends Component{
       case '23':
             this.changeState('showAccordion',true);
       break;
-
-      case '23':
-            this.changeState('showAccordion',true);
-      break;
       case '24':
            this.changeState('showListView',true);
       break;
@@ -219,7 +215,7 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion,showListView}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>
@@ -413,7 +409,7 @@ class Detial extends Component{
 
                   </ScrollerView>
               </div>
-              <div>
+              <div style={{display:showAccordion ? 'block' : 'none'}}>
                  <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
                      <Panel header={"test for Accordion"} arrow={true}>
                          <List>

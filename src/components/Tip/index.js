@@ -27,14 +27,16 @@ class Tip extends Component{
         	})
         }
     }
-    startTimeout=()=>{
+  startTimeout=()=>{
        const _this=this;
-       const {hideTime}=this.props;
+       const {hideTime,onHideCallback}=this.props;
        clearTimeout(this.timeoutId);
        this.timeoutId=setTimeout(function(){
        	  _this.isShowing=false;
           _this.setState({
           	visible:false,
+          },()=>{
+            onHideCallback && onHideCallback();
           })
        },hideTime)
     }
@@ -58,6 +60,7 @@ Tip.propTypes={
   type:PropTypes.string,
   visible:PropTypes.bool,
   hideTime:PropTypes.number,
+  onHideCallback:PropTypes.func,
 }
 
 Tip.defaultProps={
@@ -66,5 +69,6 @@ Tip.defaultProps={
 	type:'success',   //type : tip的类型 ：success成功提示   error  失败提示
 	visible:false,
 	hideTime:2000, //tip消失时间
+  onHideCallback:null,
 }
 export default Tip;

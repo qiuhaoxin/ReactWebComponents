@@ -9,5 +9,3 @@ const render=(MyComponent)=>{
 	)
 }
 render(MyRouter);
-
-

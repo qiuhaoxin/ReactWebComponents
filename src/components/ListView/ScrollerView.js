@@ -9,8 +9,19 @@ class ScrollerView extends Component{
 		super(props);
 
 	}
+
 	state={
 
+	}
+	componentWillUpdate(nextProps){
+       if((this.props.dataSource!==nextProps.dataSource ||
+       	   this.props.initialListSize !== nextProps.initialListSize) && this.handleScroll){
+       	if(this.props.useBodyScroll){
+       		window.removeEventListener('scroll',this.handleScroll);
+       	}else{
+       		this.ScrollViewRef.removeEventListener('scroll',this.handleScroll);
+       	}
+       }
 	}
 	componentDidMount(){
 		const {onScroll,scrollEventThrottle,onLayout,useBodyScroll}=this.props;
@@ -32,6 +43,18 @@ class ScrollerView extends Component{
 		}
 
 	}
+	componentDidUpdate(prevProps){
+       if((this.props.dataSource!==prevProps.dataSource ||
+       	   this.props.initialListSize !==prevProps.dataSource) && this.handleScroll){
+       	  setTimeout(()=>{
+             if(this.props.useBodyScroll){
+             	window.addEventListener('scroll',this.handleScroll);
+             }else{
+             	this.ScrollViewRef.addEventListener('scroll',this.handleScroll);
+             }
+       	  },0)
+       }
+	}
 	componentWillUnmount(){
 		const {useBodyScroll}=this.props;
 		if(useBodyScroll){
@@ -40,6 +63,16 @@ class ScrollerView extends Component{
 
 		}else{
 			this.ScrollViewRef.removeEventListener('scroll',this.handleScroll);
+		}
+	}
+	getInnerViewNode=()=>this.InnerScrollViewRef;
+	scrollTo=(...args)=>{
+		const {useBodyScroll}=this.props;
+		if(useBodyScroll){
+			window.scrollTo(...args);
+		}else{
+			this.ScrollViewRef.scrollLeft=args[0];
+			this.ScrollViewRef.scrollTop=args[1];
 		}
 	}
 	getMetrics=()=>{
@@ -76,7 +109,7 @@ class ScrollerView extends Component{
        const containerProps={
        	   ref:el=>this.ScrollViewRef=el || this.ScrollViewRef,
        	   style:{...(useBodyScroll ? {} :styleBase),...style},
-       	   className:className(className,`${preCls}-scrollview`),
+       	   className:classNames(className,`${preCls}-scrollview`),
        };
        const contentContainerProps={
        	   ref:el=>this.InnerScrollViewRef=el,
@@ -91,17 +124,16 @@ class ScrollerView extends Component{
 
        if(useBodyScroll){
        	  if(pullToRefresh){
-       	  	 return {
-       	  	 	<div {}>
+       	  	 return 
+       	  	 	<div {...containerProps}>
                     {clonePullToRefresh(true)}
        	  	 	</div>
-       	  	 };
+       	  	 
        	  }
-       	  return {
+       	  return 
        	  	<div {...containerProps}>
                  {children}
        	  	</div>
-       	  };
        }
        if(pullToRefresh){
           return (
@@ -121,6 +153,16 @@ class ScrollerView extends Component{
        )
 	}
 }
+ScrollerView.defaultProps={
 
+}
+ScrollerView.propsType={
+	className:PropTypes.string,
+	prefixCls:PropTypes.string,
+	listPrefixCls:PropTypes.string,
+	style:PropTypes.object,
+	contentContainerStyle:PropTypes.object,
+	onScroll:PropTypes.func,
+}
 export default ScrollerView;
 
