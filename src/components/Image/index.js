@@ -14,7 +14,7 @@ class Image extends Component{
         const {onImageClick}=this.props;
     }
 	render(){
-	   const {imgSrc,imgStyle}=this.props;
+	   const {imgSrc,imgStyle}=this.props; 
        return (
            <div>
                <img src={imgSrc} style={imgStyle}/>
@@ -26,7 +26,6 @@ class Image extends Component{
 Image.propTypes={
 	imgStyle:PropTypes.object,
 	imgSrc:PropTypes.string.isRequired,
-
 }
 Image.defaultProps={
     imgSrc:'',

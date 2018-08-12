@@ -34,7 +34,8 @@ import View from '../../../components/View/index.js';
 
 import Collapse from '../../../components/Accordion/index.js';
 
-import ScrollerView from '../../../components/ListView/index.js';
+import ListView from '../../../components/ListView/index.js';
+
 
  const Panel=Collapse.CollapsePanel;
 //import Collapse,{Panel} from '../../../components/Accordion/index.js';
@@ -47,6 +48,14 @@ const ListItem=List.Item;
 
 const personImg=require('../../images/haoxin_qiu.jpg');
 
+function genData(pIndex=0){
+  const dataArr=[];
+  for(let i=0;i<20;i++){
+    dataArr.push(`row-${(pIndex * 20) + i}`);
+  }
+  return dataArr;
+}
+
 class Detial extends Component{
 	constructor(props){
 		super(props);
@@ -57,7 +66,9 @@ class Detial extends Component{
        {id:3,text:'保存'},
     ];
     this.limit={min:0,max:10};
-
+    this.dataSource=new ListView.DataSource({
+      rowHasChanged:(row1,row2)=>row1!==row2
+    })
     this.segmentData=[
        {text:'Segment1'},
        {text:'Segment2'},
@@ -94,6 +105,7 @@ class Detial extends Component{
     showView:false,
     showAccordion:false,
     showListView:false,
+    dataSource:this.dataSource,
 	}
   changeState=(key,value)=>{
        this.setState({
@@ -164,7 +176,13 @@ class Detial extends Component{
             this.changeState('showAccordion',true);
       break;
       case '24':
-           this.changeState('showListView',true);
+           setTimeout(()=>{
+              this.setState({
+                showListView:true,
+                dataSource:this.state.dataSource.cloneWithRows(genData()),
+              })
+           },600);
+
       break;
       default:
 
@@ -403,11 +421,17 @@ class Detial extends Component{
                   </Collapse>
               </div>
               <div style={{display:showListView ? 'block' : 'none'}}>
-                  <ScrollerView
-                     
+                  <ListView
+                    ref={el => this.lv = el}
+                    dataSource={this.state.dataSource}
+                    style={{ height: 200, border: '1px solid #ccc', margin: 10 }}
+                    renderHeader={() =>
+                      <button onClick={() => this.lv.scrollTo(0, 100)}>scrollTo(0, 100)</button>}
+                    renderRow={rowData => <div style={{ padding: 16 }}>{rowData}</div>}
+                    onEndReachedThreshold={10}
                   >
 
-                  </ScrollerView>
+                  </ListView>
               </div>
               <div style={{display:showAccordion ? 'block' : 'none'}}>
                  <Collapse prefixCls="accordion" defaultActiveKey="0" activeKey='0' className="my-accordion" accordion={true}>
