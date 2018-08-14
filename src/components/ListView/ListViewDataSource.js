@@ -20,7 +20,7 @@ class ListViewDataSource{
 
 	constructor(params){
 		this._rowHasChanged=params.rowHasChanged;
-		this._getRowData=params.getRowData;
+		this._getRowData=params.getRowData || defaultGetRowData;
 		this._sectionHeaderHasChanged=params.sectionHeaderHasChanged;
 		this._getSectionHeaderData=params.getSectionHeaderData||defaultGetSectionHeaderData;
 		this._dataBlob=null;

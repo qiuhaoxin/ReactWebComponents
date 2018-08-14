@@ -84,13 +84,12 @@ class Detial extends Component{
        {id:3,type:'icon',icon:'e91b',text:'文件夹',icon_click:'e91a'},
        {id:4,type:'icon',icon:'e905',text:'订单',icon_click:'e904'},
     ];
-	}
-	state={
-		showSwitch:false,
-		showRadio:false,
-		radioValue:'male',
-		showList:false,
-		showBtn:false,
+    this.state={
+    showSwitch:false,
+    showRadio:false,
+    radioValue:'male',
+    showList:false,
+    showBtn:false,
     showActionSheet:false,
     actionSheetShow:false,
     showStepper:false,
@@ -106,7 +105,9 @@ class Detial extends Component{
     showAccordion:false,
     showListView:false,
     dataSource:this.dataSource,
+  }
 	}
+
   changeState=(key,value)=>{
        this.setState({
           [key]:value,
@@ -179,6 +180,7 @@ class Detial extends Component{
            setTimeout(()=>{
               this.setState({
                 showListView:true,
+
                 dataSource:this.state.dataSource.cloneWithRows(genData()),
               })
            },600);

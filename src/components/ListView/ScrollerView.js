@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {ttrottle} from '../../utils/util';
+import {throttle} from '../../utils/util';
 
 
 class ScrollerView extends Component{
@@ -27,7 +27,7 @@ class ScrollerView extends Component{
 		const {onScroll,scrollEventThrottle,onLayout,useBodyScroll}=this.props;
 		let handleScroll=e=>this.props.onScroll && this.props.onScroll(e,this.getMetrics);
 		if(scrollEventThrottle){
-			handleScroll=ttrottle(handleScroll,scrollEventThrottle);
+			handleScroll=throttle(handleScroll,scrollEventThrottle);
 		}
 		this.handleScroll=handleScroll;
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // import Styles from './index.less';
 import Icon from '../Icon/index.js';
 import './index.less';
-import FooterView from './FooterView.js';
+//import FooterView from './FooterView.js';
 
 const prefixCls="pageviewer";
 class PageViewer extends Component{
@@ -35,7 +35,6 @@ class PageViewer extends Component{
                  <div ref={el=>this.contentWrapper=el}>
 
                  </div>
-                 <FooterView />
             </div>
 		)
 	}
