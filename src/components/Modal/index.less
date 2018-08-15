@@ -1,0 +1,27 @@
+.modal-wrapper{
+	position:absolute;z-index:100;width:80%;left:10%;border-radius:8px;background-color:#fff;
+	box-shadow:2px 1px 1px 0px rgba(0,0,0,.1);
+    &.modal-show{
+       visibility:visible;
+    }
+    &.modal-hide{
+       visibility:hidden;
+    }
+	& .modal-header{
+	    width:100%;display:inline-flex;justify-content:center;align-items:center;
+	    border-bottom:1px solid #eee;font-size:18px;padding:6px 0;
+	}
+	& .modal-innerWrapper{
+	   padding:20px 18px 0;border-bottom:1px solid #eee;
+	}
+	& .modal-footer{
+	    width:100%;display:inline-flex;padding:8px 0;
+	    &-cancel,&-confirm{
+	       width:50%;display:inline-flex;font-size:18px;justify-content:center;
+	    }
+	    &-cancel{
+	     color:red;border-right:1px solid #eee;
+	    }
+
+	}
+}

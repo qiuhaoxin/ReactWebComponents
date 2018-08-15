@@ -36,6 +36,8 @@ import Collapse from '../../../components/Accordion/index.js';
 
 import ListView from '../../../components/ListView/index.js';
 
+import Modal from '../../../components/Modal/index.js';
+
 
  const Panel=Collapse.CollapsePanel;
 //import Collapse,{Panel} from '../../../components/Accordion/index.js';
@@ -50,9 +52,10 @@ const personImg=require('../../images/haoxin_qiu.jpg');
 
 function genData(pIndex=0){
   const dataArr=[];
-  for(let i=0;i<20;i++){
-    dataArr.push(`row-${(pIndex * 20) + i}`);
-  }
+  // for(let i=0;i<20;i++){
+  //   dataArr.push(`row-${(pIndex * 20) + i}`);
+  // }
+    dataArr.push({"FID":1,"FName":"测试计划类型名称","FCREATTIME":"2018-08-15T06:24:04.000Z","FMARK":"测试计划类型备注"});
   return dataArr;
 }
 
@@ -105,6 +108,7 @@ class Detial extends Component{
     showAccordion:false,
     showListView:false,
     dataSource:this.dataSource,
+    showModal:false,
   }
 	}
 
@@ -186,6 +190,9 @@ class Detial extends Component{
            },600);
 
       break;
+      case '25':
+          this.changeState('showModal',true);
+      break;
       default:
 
       break;
@@ -235,7 +242,8 @@ class Detial extends Component{
 	render(){
 	   const {title,id}=this.props.match.params;
 	   const {showSwitch,showRadio,radioValue,showBtn,showActionSheet,actionSheetShow,showStepper,showSegment,showIcon,showTabPage,
-      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion,showListView}=this.state;
+      showHeader,showPageViewer,showPopover,showBadge,showImage,showView,showList,showAccordion,showListView,
+      showModal}=this.state;
        return (
           <div className={'detail-wrapper'}>
               <div style={{'display':showSwitch ? 'block' : 'none'}}>

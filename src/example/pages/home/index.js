@@ -10,6 +10,8 @@ import './index.less';
 
  import Tip from  '../../../components/Tip/index.js';//提示toask
 
+ import Modal from '../../../components/Modal/index.js';//Modal
+
 // import Stepper from '../../../components/Stepper/index.js';//
 
  const NineCellItem=NineCell.Item;
@@ -41,12 +43,15 @@ class Home extends Component{
             {title:'Carouset',id:22},
             {title:'Accordion',id:23},
             {title:'ListView',id:24},
+            {title:'Modal',id:25},
 		]
 	}
   state={
       showDialog:false,
       showLoading:false,
       showTip:false,
+      showModal:false,
+      modalVisible:false,
   }
 	componentDidMount(){
 
@@ -72,6 +77,11 @@ class Home extends Component{
                   showTip:true,
                })
             break;
+            case 25:
+               this.setState({
+                  showModal:true,
+               })
+            break;
             default:
               this.props.history.push('/detail/'+id+"/"+item.title);
             break;
@@ -88,8 +98,20 @@ class Home extends Component{
             showDialog:false,
         })
     }
+    hanldeModalCancel=()=>{
+       console.log("cancel");
+       this.setState({
+          showModal:false,
+       })
+    }
+    handleModalConfirm=()=>{
+        console.log("confirm");
+        this.setState({
+          showModal:false,
+        })
+    }
 	render(){
-    const {showDialog,showLoading,showTip}=this.state;
+    const {showDialog,showLoading,showTip,modalVisible,showModal}=this.state;
 		return (
           <div className={'home-wrapper'}>
               <NineCell data={this.nineCellData} columnNum={4}
@@ -111,6 +133,17 @@ class Home extends Component{
 
             <Tip visible={showTip} tipContent="提交数据成功,请联系管理员到数据库后天查看" type='success' />
             
+            <Modal title="新增计划类型" onOk={this.handleModalConfirm} onCancel={this.hanldeModalCancel}
+            visible={showModal}>
+                  <div className="modal-row">
+                      <label>名称:</label>
+                      <input placeholder="请输入"/>
+                  </div>
+                  <div className="modal-row">
+                      <label>备注:</label>
+                      <textarea placeholder="请输入"/>
+                  </div>
+            </Modal>
            </div>
       		)
 	}

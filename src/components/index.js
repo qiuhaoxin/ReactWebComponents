@@ -31,4 +31,8 @@ export {default as Accordion} from './Accordion/index.js';
 
 export {default as View} from './View/index.js';
 
+export {default as Modal} from './Modal/index.js';
+
+export {default as ListView} from './ListView/index.js';
+
 
